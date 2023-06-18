@@ -5,9 +5,9 @@ import 'package:face_net_authentication/halamans/siswa/face-services/save_face_d
 import 'package:face_net_authentication/locator.dart';
 import 'package:face_net_authentication/pages/widgets/FacePainter.dart';
 import 'package:face_net_authentication/pages/widgets/camera_header.dart';
-import 'package:face_net_authentication/services/camera.service.dart';
-import 'package:face_net_authentication/services/ml_service.dart';
-import 'package:face_net_authentication/services/face_detector_service.dart';
+import 'package:face_net_authentication/pages/services/camera.service.dart';
+import 'package:face_net_authentication/pages/services/ml_service.dart';
+import 'package:face_net_authentication/pages/services/face_detector_service.dart';
 import 'package:camera/camera.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:flutter/material.dart';

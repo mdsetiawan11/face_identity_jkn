@@ -8,9 +8,9 @@ import 'package:face_net_authentication/pages/widgets/camera_detection_preview.d
 import 'package:face_net_authentication/pages/widgets/camera_header.dart';
 import 'package:face_net_authentication/halamans/kirim_absen.dart';
 import 'package:face_net_authentication/pages/widgets/single_picture.dart';
-import 'package:face_net_authentication/services/camera.service.dart';
-import 'package:face_net_authentication/services/face_detector_service.dart';
-import 'package:face_net_authentication/services/ml_service.dart';
+import 'package:face_net_authentication/pages/services/camera.service.dart';
+import 'package:face_net_authentication/pages/services/face_detector_service.dart';
+import 'package:face_net_authentication/pages/services/ml_service.dart';
 
 import 'package:flutter/material.dart';
 

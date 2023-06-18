@@ -3,7 +3,7 @@
 import 'package:face_net_authentication/locator.dart';
 import 'package:face_net_authentication/pages/db/databse_helper.dart';
 import 'package:face_net_authentication/pages/models/user.model.dart';
-import 'package:face_net_authentication/services/ml_service.dart';
+import 'package:face_net_authentication/pages/services/ml_service.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
