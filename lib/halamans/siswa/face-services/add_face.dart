@@ -201,7 +201,7 @@ class SignUpState extends State<AddFace> {
           children: [
             body,
             CameraHeader(
-              "SIGN UP",
+              "Tambah Data Wajah " + widget.nmsiswa,
               onBackPressed: _onBackPressed,
             )
           ],

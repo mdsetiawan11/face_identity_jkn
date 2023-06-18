@@ -6,7 +6,7 @@ import 'package:face_net_authentication/pages/models/user.model.dart';
 import 'package:face_net_authentication/pages/widgets/auth_button.dart';
 import 'package:face_net_authentication/pages/widgets/camera_detection_preview.dart';
 import 'package:face_net_authentication/pages/widgets/camera_header.dart';
-import 'package:face_net_authentication/halamans/utama/kirim_absen.dart';
+import 'package:face_net_authentication/halamans/kirim_absen.dart';
 import 'package:face_net_authentication/pages/widgets/single_picture.dart';
 import 'package:face_net_authentication/services/camera.service.dart';
 import 'package:face_net_authentication/services/face_detector_service.dart';
@@ -80,7 +80,7 @@ class AbsenPageState extends State<AbsenPage> {
       showDialog(
           context: context,
           builder: (context) =>
-              AlertDialog(content: Text('No face detected!')));
+              AlertDialog(content: Text('Tidak ada wajah terdeteksi!')));
     }
   }
 
@@ -112,15 +112,21 @@ class AbsenPageState extends State<AbsenPage> {
 
   @override
   Widget build(BuildContext context) {
-    Widget header = CameraHeader("LOGIN", onBackPressed: _onBackPressed);
     Widget body = getBodyWidget();
+
     Widget? fab;
     if (!_isPictureTaken) fab = AuthButton(onTap: onTap);
 
     return Scaffold(
       key: scaffoldKey,
       body: Stack(
-        children: [body, header],
+        children: [
+          body,
+          CameraHeader(
+            "Kirim Absen",
+            onBackPressed: _onBackPressed,
+          )
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: fab,

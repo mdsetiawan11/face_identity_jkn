@@ -1,10 +1,5 @@
 import 'dart:convert';
 import 'package:face_net_authentication/halamans/siswa/face-services/add_face.dart';
-import 'package:face_net_authentication/locator.dart';
-
-import 'package:face_net_authentication/services/camera.service.dart';
-import 'package:face_net_authentication/services/ml_service.dart';
-import 'package:face_net_authentication/services/face_detector_service.dart';
 
 import 'package:face_net_authentication/halamans/siswa/siswa.dart';
 import 'package:flutter/material.dart';
