@@ -1,14 +1,23 @@
 import 'package:face_net_authentication/halamans/landingpage.dart';
+import 'package:face_net_authentication/halamans/layoutpage.dart';
 import 'package:face_net_authentication/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+Future<void> main() async {
   setupServices();
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences localStorage = await SharedPreferences.getInstance();
+  var idguru = (localStorage.getString('idguru') ?? '');
+  runApp(MyApp(idguru: idguru));
 }
 
 class MyApp extends StatelessWidget {
+  final String idguru;
+  const MyApp({super.key, required this.idguru});
+
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +27,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
       ),
-      home: LandingPage(),
+      home: idguru == "" ? const LandingPage() : const LayoutPage(),
     );
   }
 }

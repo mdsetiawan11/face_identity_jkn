@@ -1,3 +1,11 @@
+import 'package:face_net_authentication/halamans/absen.dart';
+import 'package:face_net_authentication/halamans/siswa/list_kelas.dart';
+import 'package:face_net_authentication/halamans/utama/menuutamapage.dart';
+import 'package:face_net_authentication/locator.dart';
+
+import 'package:face_net_authentication/services/camera.service.dart';
+import 'package:face_net_authentication/services/face_detector_service.dart';
+import 'package:face_net_authentication/services/ml_service.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
@@ -9,14 +17,31 @@ class LayoutPage extends StatefulWidget {
 }
 
 class _LayoutPageState extends State<LayoutPage> {
+  MLService _mlService = locator<MLService>();
+  FaceDetectorService _mlKitService = locator<FaceDetectorService>();
+  CameraService _cameraService = locator<CameraService>();
+  bool loading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeServices();
+  }
+
+  _initializeServices() async {
+    await _cameraService.initialize();
+    await _mlService.initialize();
+    _mlKitService.initialize();
+  }
+
   int _selectedIndex = 1;
 
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
   final List<Widget> _pages = [
-    Center(child: Text('data siswa')),
-    Text('data'),
-    Text('data'),
+    ListKelasPage(),
+    MenuUtamaPage(),
+    AbsenPage(),
   ];
   @override
   Widget build(BuildContext context) {

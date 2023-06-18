@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:math' as math;
+import 'package:face_net_authentication/halamans/siswa/face-services/save_face_data.dart';
 import 'package:face_net_authentication/locator.dart';
 import 'package:face_net_authentication/pages/widgets/FacePainter.dart';
-import 'package:face_net_authentication/pages/widgets/auth-action-button.dart';
 import 'package:face_net_authentication/pages/widgets/camera_header.dart';
 import 'package:face_net_authentication/services/camera.service.dart';
 import 'package:face_net_authentication/services/ml_service.dart';
@@ -12,14 +12,17 @@ import 'package:camera/camera.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:flutter/material.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+class AddFace extends StatefulWidget {
+  final String idsiswa;
+  final String nmsiswa;
+  const AddFace({Key? key, required this.idsiswa, required this.nmsiswa})
+      : super(key: key);
 
   @override
   SignUpState createState() => SignUpState();
 }
 
-class SignUpState extends State<SignUp> {
+class SignUpState extends State<AddFace> {
   String? imagePath;
   Face? faceDetected;
   Size? imageSize;
@@ -63,7 +66,7 @@ class SignUpState extends State<SignUp> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            content: Text('No face detected!'),
+            content: Text('Tidak ada wajah terdeteksi!'),
           );
         },
       );
@@ -205,10 +208,12 @@ class SignUpState extends State<SignUp> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: !_bottomSheetVisible
-            ? AuthActionButton(
+            ? SaveFaceData(
                 onPressed: onShot,
                 isLogin: false,
                 reload: _reload,
+                nmsiswa: widget.nmsiswa,
+                idsiswa: widget.idsiswa,
               )
             : Container());
   }

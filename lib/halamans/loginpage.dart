@@ -1,7 +1,12 @@
+import 'dart:convert';
+
 import 'package:face_net_authentication/halamans/layoutpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,7 +18,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool _passwordVisible = true;
   bool isLoading = false;
-  final TextEditingController _idguru = TextEditingController();
+  final TextEditingController _username = TextEditingController();
   final TextEditingController _password = TextEditingController();
   @override
   void initState() {
@@ -23,9 +28,45 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void dispose() {
-    _idguru.dispose();
+    _username.dispose();
     _password.dispose();
     super.dispose();
+  }
+
+  Future login() async {
+    try {
+      var url = Uri.parse('http://192.168.1.9/siabsensi/api/login');
+      var response = await http.post(
+        url,
+        body: {
+          "username": _username.text.trim(),
+          "password": _password.text.trim(),
+        },
+      );
+      var data = jsonDecode(response.body);
+      print(data);
+      if (data == "Username atau Password salah.") {
+        return Fluttertoast.showToast(
+          msg: 'Username atau password salah',
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+        );
+      } else {
+        final localStorage = await SharedPreferences.getInstance();
+        await localStorage.setString("username", data['username']);
+        await localStorage.setString("nmguru", data['nmguru']);
+        await localStorage.setString("idguru", data['idguru']);
+
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => LayoutPage()));
+      }
+    } catch (e) {
+      return Fluttertoast.showToast(
+        msg: 'Username atau password salah',
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+      );
+    }
   }
 
   @override
@@ -76,10 +117,10 @@ class _LoginPageState extends State<LoginPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 40.0),
                       child: TextField(
-                        controller: _idguru,
-                        style: const TextStyle(fontSize: 20),
+                        controller: _username,
+                        style: const TextStyle(fontSize: 16),
                         decoration: InputDecoration(
-                          label: const Text('ID Guru'),
+                          label: const Text('Username'),
                           icon: Icon(
                             Icons.person,
                             color: Colors.deepPurple.shade800,
@@ -91,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 40.0),
                       child: TextField(
                         controller: _password,
-                        style: const TextStyle(fontSize: 20),
+                        style: const TextStyle(fontSize: 16),
                         decoration: InputDecoration(
                           label: const Text('Password'),
                           icon: Icon(
@@ -127,13 +168,10 @@ class _LoginPageState extends State<LoginPage> {
                           setState(() {
                             isLoading = true;
                           });
-                          Future.delayed(const Duration(seconds: 2), () {
+
+                          Future.delayed(Duration(seconds: 2), () {
                             setState(() {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const LayoutPage()));
+                              login();
                               isLoading = false;
                             });
                           });

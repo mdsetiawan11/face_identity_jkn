@@ -9,10 +9,10 @@ class DatabaseHelper {
   static final _databaseName = "MyDatabase.db";
   static final _databaseVersion = 1;
 
-  static final table = 'users';
+  static final table = 'siswa';
   static final columnId = 'id';
-  static final columnUser = 'user';
-  static final columnPassword = 'password';
+  static final columnIdsiswa = 'idsiswa';
+  static final columnNmsiswa = 'nmsiswa';
   static final columnModelData = 'model_data';
 
   DatabaseHelper._privateConstructor();
@@ -35,22 +35,22 @@ class DatabaseHelper {
     await db.execute('''
           CREATE TABLE $table (
             $columnId INTEGER PRIMARY KEY,
-            $columnUser TEXT NOT NULL,
-            $columnPassword TEXT NOT NULL,
+            $columnIdsiswa TEXT NOT NULL,
+            $columnNmsiswa TEXT NOT NULL,
             $columnModelData TEXT NOT NULL
           )
           ''');
   }
 
-  Future<int> insert(User user) async {
+  Future<int> insert(Siswa siswa) async {
     Database db = await instance.database;
-    return await db.insert(table, user.toMap());
+    return await db.insert(table, siswa.toMap());
   }
 
-  Future<List<User>> queryAllUsers() async {
+  Future<List<Siswa>> queryAllSiswa() async {
     Database db = await instance.database;
-    List<Map<String, dynamic>> users = await db.query(table);
-    return users.map((u) => User.fromMap(u)).toList();
+    List<Map<String, dynamic>> siswas = await db.query(table);
+    return siswas.map((u) => Siswa.fromMap(u)).toList();
   }
 
   Future<int> deleteAll() async {

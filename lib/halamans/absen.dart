@@ -1,25 +1,27 @@
 import 'dart:async';
+
+import 'package:camera/camera.dart';
 import 'package:face_net_authentication/locator.dart';
 import 'package:face_net_authentication/pages/models/user.model.dart';
 import 'package:face_net_authentication/pages/widgets/auth_button.dart';
 import 'package:face_net_authentication/pages/widgets/camera_detection_preview.dart';
 import 'package:face_net_authentication/pages/widgets/camera_header.dart';
-import 'package:face_net_authentication/pages/widgets/signin_form.dart';
+import 'package:face_net_authentication/halamans/utama/kirim_absen.dart';
 import 'package:face_net_authentication/pages/widgets/single_picture.dart';
 import 'package:face_net_authentication/services/camera.service.dart';
-import 'package:face_net_authentication/services/ml_service.dart';
 import 'package:face_net_authentication/services/face_detector_service.dart';
-import 'package:camera/camera.dart';
+import 'package:face_net_authentication/services/ml_service.dart';
+
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({Key? key}) : super(key: key);
+class AbsenPage extends StatefulWidget {
+  const AbsenPage({Key? key}) : super(key: key);
 
   @override
-  SignInState createState() => SignInState();
+  AbsenPageState createState() => AbsenPageState();
 }
 
-class SignInState extends State<SignIn> {
+class AbsenPageState extends State<AbsenPage> {
   CameraService _cameraService = locator<CameraService>();
   FaceDetectorService _faceDetectorService = locator<FaceDetectorService>();
   MLService _mlService = locator<MLService>();
@@ -94,9 +96,9 @@ class SignInState extends State<SignIn> {
   Future<void> onTap() async {
     await takePicture();
     if (_faceDetectorService.faceDetected) {
-      User? user = await _mlService.predict();
+      Siswa? siswa = await _mlService.predict();
       var bottomSheetController = scaffoldKey.currentState!
-          .showBottomSheet((context) => signInSheet(user: user));
+          .showBottomSheet((context) => signInSheet(siswa: siswa));
       bottomSheetController.closed.whenComplete(_reload);
     }
   }
@@ -125,14 +127,14 @@ class SignInState extends State<SignIn> {
     );
   }
 
-  signInSheet({@required User? user}) => user == null
+  signInSheet({@required Siswa? siswa}) => siswa == null
       ? Container(
           width: MediaQuery.of(context).size.width,
           padding: EdgeInsets.all(20),
           child: Text(
-            'User not found 😞',
+            'Data wajah tidak ditemukan 😞',
             style: TextStyle(fontSize: 20),
           ),
         )
-      : SignInSheet(user: user);
+      : KirimAbsen(siswa: siswa);
 }

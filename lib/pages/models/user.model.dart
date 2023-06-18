@@ -1,28 +1,28 @@
 import 'dart:convert';
 
-class User {
-  String user;
-  String password;
+class Siswa {
+  String idsiswa;
+  String nmsiswa;
   List modelData;
 
-  User({
-    required this.user,
-    required this.password,
+  Siswa({
+    required this.idsiswa,
+    required this.nmsiswa,
     required this.modelData,
   });
 
-  static User fromMap(Map<String, dynamic> user) {
-    return new User(
-      user: user['user'],
-      password: user['password'],
-      modelData: jsonDecode(user['model_data']),
+  static Siswa fromMap(Map<String, dynamic> siswa) {
+    return new Siswa(
+      idsiswa: siswa['idsiswa'],
+      nmsiswa: siswa['nmsiswa'],
+      modelData: jsonDecode(siswa['model_data']),
     );
   }
 
   toMap() {
     return {
-      'user': user,
-      'password': password,
+      'idsiswa': idsiswa,
+      'nmsiswa': nmsiswa,
       'model_data': jsonEncode(modelData),
     };
   }
