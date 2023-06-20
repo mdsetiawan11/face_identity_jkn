@@ -1,11 +1,11 @@
-class Siswa {
+class ListSiswa {
   final String idsiswa;
   final String nmsiswa;
   // ignore: non_constant_identifier_names
   final String jenis_kelamin;
   final String nmkelas;
 
-  Siswa({
+  ListSiswa({
     required this.idsiswa,
     required this.nmsiswa,
     // ignore: non_constant_identifier_names

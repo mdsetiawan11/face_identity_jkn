@@ -1,5 +1,5 @@
-import 'package:face_net_authentication/halamans/landingpage.dart';
-import 'package:face_net_authentication/halamans/layoutpage.dart';
+import 'package:face_net_authentication/pages/auth/landingpage.dart';
+import 'package:face_net_authentication/pages/layoutpage.dart';
 import 'package:face_net_authentication/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

@@ -1,54 +1,45 @@
 import 'dart:convert';
+import 'package:face_net_authentication/pages/siswa/face-services/add_face.dart';
 
-import 'package:face_net_authentication/halamans/siswa/kelas.dart';
-import 'package:face_net_authentication/halamans/siswa/list_siswa.dart';
+import 'package:face_net_authentication/pages/siswa/siswa.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-class ListKelasPage extends StatefulWidget {
-  const ListKelasPage({super.key});
+class ListSiswaPage extends StatefulWidget {
+  final String idkelas;
+  final String nmkelas;
+  ListSiswaPage({super.key, required this.idkelas, required this.nmkelas});
 
   @override
-  State<ListKelasPage> createState() => _ListKelasPageState();
+  State<ListSiswaPage> createState() => _ListSiswaPageState();
 }
 
-class _ListKelasPageState extends State<ListKelasPage> {
-  String idguru = '';
-  List<Kelas> listkelas = [];
-
+class _ListSiswaPageState extends State<ListSiswaPage> {
+  List<ListSiswa> listsiswa = [];
   Future getData() async {
     try {
-      SharedPreferences localStorage = await SharedPreferences.getInstance();
-
-      idguru = (localStorage.getString('idguru') ?? '');
-
-      var url = Uri.parse('http://192.168.1.9/siabsensi/api/jadwal/' + idguru);
+      var url =
+          Uri.parse('http://192.168.1.9/siabsensi/api/siswa/' + widget.nmkelas);
       var response = await http.get(url);
       var data = json.decode(response.body);
       print(data);
 
-      for (var eachKelas in data) {
-        final kelasData = Kelas(
-          idjadwal: eachKelas['idjadwal'],
-          idkelas: eachKelas['idkelas'],
-          idmapel: eachKelas['idmapel'],
-          idguru: eachKelas['idguru'],
-          nmkelas: eachKelas['nmkelas'],
-          nmmapel: eachKelas['nmmapel'],
-          nmguru: eachKelas['nmguru'],
-          hari: eachKelas['hari'],
-          status: eachKelas['status'],
+      for (var eachSiswa in data) {
+        final siswaData = ListSiswa(
+          idsiswa: eachSiswa['idsiswa'],
+          nmsiswa: eachSiswa['nmsiswa'],
+          jenis_kelamin: eachSiswa['jenis_kelamin'],
+          nmkelas: eachSiswa['nmkelas'],
         );
-        listkelas.add(kelasData);
+        listsiswa.add(siswaData);
       }
-      print(listkelas.length);
+      print(listsiswa.length);
     } catch (e) {
       return Fluttertoast.showToast(
-        msg: 'Tidak ada data',
-        backgroundColor: Colors.yellow.shade600,
+        msg: 'Tidak ada Data',
+        backgroundColor: Colors.red,
         textColor: Colors.white,
       );
     }
@@ -60,11 +51,11 @@ class _ListKelasPageState extends State<ListKelasPage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: const Text(
-          'Daftar Kelas',
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Text(
+          'Daftar Siswa Kelas ' + widget.nmkelas,
           style: TextStyle(color: Colors.white),
         ),
-        automaticallyImplyLeading: false,
         flexibleSpace: Container(
           decoration: BoxDecoration(
               color: Colors.deepPurple.shade800,
@@ -80,23 +71,23 @@ class _ListKelasPageState extends State<ListKelasPage> {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ListView.builder(
-                  itemCount: listkelas.length,
+                  itemCount: listsiswa.length,
                   itemBuilder: (context, index) {
                     return Card(
                       child: ListTile(
-                        title: Text(listkelas[index].nmkelas),
+                        title: Text(listsiswa[index].nmsiswa),
                         trailing: IconButton(
                             onPressed: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => ListSiswaPage(
-                                      idkelas: listkelas[index].idkelas,
-                                      nmkelas: listkelas[index].nmkelas,
+                                    builder: (context) => AddFace(
+                                      idsiswa: listsiswa[index].idsiswa,
+                                      nmsiswa: listsiswa[index].nmsiswa,
                                     ),
                                   ));
                             },
-                            icon: Icon(Icons.arrow_forward)),
+                            icon: Icon(Icons.camera_front)),
                       ),
                     );
                   },

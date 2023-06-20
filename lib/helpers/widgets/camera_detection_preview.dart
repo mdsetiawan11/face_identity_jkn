@@ -1,8 +1,8 @@
 import 'package:camera/camera.dart';
 import 'package:face_net_authentication/locator.dart';
-import 'package:face_net_authentication/pages/widgets/FacePainter.dart';
-import 'package:face_net_authentication/pages/services/camera.service.dart';
-import 'package:face_net_authentication/pages/services/face_detector_service.dart';
+import 'package:face_net_authentication/helpers/widgets/FacePainter.dart';
+import 'package:face_net_authentication/helpers/services/camera.service.dart';
+import 'package:face_net_authentication/helpers/services/face_detector_service.dart';
 import 'package:flutter/material.dart';
 
 class CameraDetectionPreview extends StatelessWidget {

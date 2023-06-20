@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:face_net_authentication/pages/models/user.model.dart';
+import 'package:face_net_authentication/helpers/db/class_siswa.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
@@ -32,7 +32,8 @@ class DatabaseHelper {
   }
 
   Future _onCreate(Database db, int version) async {
-    await db.execute('''
+    await db.execute(
+        '''
           CREATE TABLE $table (
             $columnId INTEGER PRIMARY KEY,
             $columnIdsiswa TEXT NOT NULL,

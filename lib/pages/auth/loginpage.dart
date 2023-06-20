@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:face_net_authentication/halamans/layoutpage.dart';
+import 'package:face_net_authentication/pages/layoutpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_svg/flutter_svg.dart';

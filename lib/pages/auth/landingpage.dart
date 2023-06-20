@@ -1,4 +1,4 @@
-import 'package:face_net_authentication/halamans/loginpage.dart';
+import 'package:face_net_authentication/pages/auth/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 

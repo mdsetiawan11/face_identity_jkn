@@ -2,15 +2,15 @@ import 'dart:async';
 
 import 'package:camera/camera.dart';
 import 'package:face_net_authentication/locator.dart';
-import 'package:face_net_authentication/pages/models/user.model.dart';
-import 'package:face_net_authentication/pages/widgets/auth_button.dart';
-import 'package:face_net_authentication/pages/widgets/camera_detection_preview.dart';
-import 'package:face_net_authentication/pages/widgets/camera_header.dart';
-import 'package:face_net_authentication/halamans/kirim_absen.dart';
-import 'package:face_net_authentication/pages/widgets/single_picture.dart';
-import 'package:face_net_authentication/pages/services/camera.service.dart';
-import 'package:face_net_authentication/pages/services/face_detector_service.dart';
-import 'package:face_net_authentication/pages/services/ml_service.dart';
+import 'package:face_net_authentication/helpers/db/class_siswa.dart';
+import 'package:face_net_authentication/helpers/widgets/auth_button.dart';
+import 'package:face_net_authentication/helpers/widgets/camera_detection_preview.dart';
+import 'package:face_net_authentication/helpers/widgets/camera_header.dart';
+import 'package:face_net_authentication/pages/absensi/kirim_absen.dart';
+import 'package:face_net_authentication/helpers/widgets/single_picture.dart';
+import 'package:face_net_authentication/helpers/services/camera.service.dart';
+import 'package:face_net_authentication/helpers/services/face_detector_service.dart';
+import 'package:face_net_authentication/helpers/services/ml_service.dart';
 
 import 'package:flutter/material.dart';
 

@@ -1,9 +1,9 @@
 // ignore_for_file: use_build_context_synchronously, avoid_print
 
 import 'package:face_net_authentication/locator.dart';
-import 'package:face_net_authentication/pages/db/databse_helper.dart';
-import 'package:face_net_authentication/pages/models/user.model.dart';
-import 'package:face_net_authentication/pages/services/ml_service.dart';
+import 'package:face_net_authentication/helpers/db/database_helper.dart';
+import 'package:face_net_authentication/helpers/db/class_siswa.dart';
+import 'package:face_net_authentication/helpers/services/ml_service.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 

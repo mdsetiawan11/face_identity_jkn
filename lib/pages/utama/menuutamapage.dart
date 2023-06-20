@@ -1,5 +1,5 @@
-import 'package:face_net_authentication/pages/db/databse_helper.dart';
-import 'package:face_net_authentication/pages/models/user.model.dart';
+import 'package:face_net_authentication/helpers/db/database_helper.dart';
+import 'package:face_net_authentication/helpers/db/class_siswa.dart';
 import 'package:flutter/material.dart';
 
 class MenuUtamaPage extends StatefulWidget {
