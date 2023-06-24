@@ -61,7 +61,7 @@ class _ListKelasPageState extends State<ListKelasPage> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: const Text(
-          'Daftar Kelas',
+          'Kelas',
           style: TextStyle(color: Colors.white),
         ),
         automaticallyImplyLeading: false,

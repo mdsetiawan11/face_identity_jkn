@@ -70,20 +70,41 @@ class _SaveFaceDataState extends State<SaveFaceData> {
 
   signSheet(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+          color: Colors.deepPurple.shade800,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(25), topRight: Radius.circular(25))),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           TextField(
+            style: TextStyle(color: Colors.white),
             enabled: false,
+            decoration: InputDecoration(
+                disabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white)),
+                labelText: 'ID Siswa :',
+                labelStyle: TextStyle(color: Colors.white)),
             controller: TextEditingController(text: widget.idsiswa),
           ),
           TextField(
             enabled: false,
+            style: TextStyle(color: Colors.white),
+            decoration: InputDecoration(
+                disabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white)),
+                labelText: 'Nama Siswa :',
+                labelStyle: TextStyle(color: Colors.white)),
             controller: TextEditingController(text: widget.nmsiswa),
           ),
+          SizedBox(
+            height: 10,
+          ),
           MaterialButton(
+            color: Colors.white,
+            textColor: Colors.deepPurple.shade800,
             onPressed: () async {
               await saveSiswaFace(context);
             },
