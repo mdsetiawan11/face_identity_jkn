@@ -1,8 +1,6 @@
 import 'dart:convert';
 
 import 'package:face_net_authentication/pages/jadwal/jadwal.dart';
-import 'package:face_net_authentication/pages/kelas/kelas.dart';
-import 'package:face_net_authentication/pages/siswa/list_siswa.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -87,13 +85,15 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
                     return Card(
                       child: Container(
                         width: double.infinity,
-                        height: 120,
+                        height: 100,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(

@@ -1,5 +1,4 @@
 import 'package:face_net_authentication/pages/jadwal/list_jadwal.dart';
-import 'package:face_net_authentication/pages/utama/list_data_wajah.dart';
 import 'package:flutter/material.dart';
 
 class MenuUtamaPage extends StatefulWidget {
