@@ -1,6 +1,9 @@
-import 'package:face_net_authentication/helpers/db/class_siswa.dart';
+import 'dart:convert';
+
 import 'package:face_net_authentication/helpers/db/class_siswa.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
 
 class KirimAbsen extends StatefulWidget {
   KirimAbsen({
@@ -82,5 +85,41 @@ class _KirimAbsenState extends State<KirimAbsen> {
     );
   }
 
-  kirimAbsenAct(BuildContext context) {}
+  Future kirimAbsenAct(context) async {
+    try {
+      var url = Uri.parse('http://192.168.1.9/siabsensi/api/absen');
+      var response = await http.post(
+        url,
+        body: {
+          "idjadwal": widget.idjadwal,
+          "idsiswa": widget.idsiswa,
+        },
+      );
+      var data = jsonDecode(response.body);
+      print(data);
+      if (data == 'Absensi Terkirim') {
+        Fluttertoast.showToast(
+          msg: 'Absensi Berhasil',
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+        );
+      } else {
+        Fluttertoast.showToast(
+          msg: 'Absensi gagal, silahkan dicoba kembali',
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+        );
+      }
+    } catch (e) {
+      Fluttertoast.showToast(
+        msg: 'Absensi gagal, silahkan dicoba kembali',
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+      );
+    }
+    Navigator.of(context).pop();
+  }
 }

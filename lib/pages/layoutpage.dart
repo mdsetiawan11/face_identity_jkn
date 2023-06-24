@@ -1,6 +1,3 @@
-import 'package:face_net_authentication/pages/absensi/absen.dart';
-import 'package:face_net_authentication/pages/kelas/list_kelas.dart';
-
 import 'package:face_net_authentication/locator.dart';
 
 import 'package:face_net_authentication/helpers/services/camera.service.dart';
