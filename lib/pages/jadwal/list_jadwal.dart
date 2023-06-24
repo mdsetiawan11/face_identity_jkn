@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:face_net_authentication/pages/absensi/absen.dart';
 import 'package:face_net_authentication/pages/jadwal/jadwal.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -83,37 +84,50 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
                   itemCount: listjadwal.length,
                   itemBuilder: (context, index) {
                     return Card(
-                      child: Container(
-                        width: double.infinity,
-                        height: 100,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    listjadwal[index].nmmapel,
-                                    style: TextStyle(fontSize: 20),
-                                  ),
-                                  Text(
-                                    'Hari : ' + listjadwal[index].hari,
-                                    style: TextStyle(fontSize: 16),
-                                  ),
-                                  Text(
-                                    'Kelas : ' + listjadwal[index].nmkelas,
-                                    style: TextStyle(fontSize: 16),
-                                  )
-                                ],
-                              ),
-                              Image.asset(
-                                'assets/face-recognition.png',
-                              ),
-                            ],
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AbsenPage(
+                                        idjadwal: listjadwal[index].idjadwal,
+                                        nmmapel: listjadwal[index].nmmapel,
+                                        nmkelas: listjadwal[index].nmkelas,
+                                      )));
+                        },
+                        highlightColor: Colors.deepPurple.shade200,
+                        child: Container(
+                          width: double.infinity,
+                          height: 100,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      listjadwal[index].nmmapel,
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    Text(
+                                      'Hari : ' + listjadwal[index].hari,
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    Text(
+                                      'Kelas : ' + listjadwal[index].nmkelas,
+                                      style: TextStyle(fontSize: 16),
+                                    )
+                                  ],
+                                ),
+                                Image.asset(
+                                  'assets/face-recognition.png',
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

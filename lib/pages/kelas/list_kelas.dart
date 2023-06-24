@@ -60,11 +60,12 @@ class _ListKelasPageState extends State<ListKelasPage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
+        foregroundColor: Colors.white,
         title: const Text(
           'Kelas',
           style: TextStyle(color: Colors.white),
         ),
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
               color: Colors.deepPurple.shade800,
@@ -84,7 +85,10 @@ class _ListKelasPageState extends State<ListKelasPage> {
                   itemBuilder: (context, index) {
                     return Card(
                       child: ListTile(
-                        title: Text(listkelas[index].nmkelas),
+                        title: Text(
+                          listkelas[index].nmkelas,
+                          style: TextStyle(fontSize: 20),
+                        ),
                         trailing: IconButton(
                             onPressed: () {
                               Navigator.push(

@@ -1,4 +1,5 @@
 import 'package:face_net_authentication/pages/jadwal/list_jadwal.dart';
+import 'package:face_net_authentication/pages/kelas/list_kelas.dart';
 import 'package:flutter/material.dart';
 
 class MenuUtamaPage extends StatefulWidget {
@@ -35,39 +36,92 @@ class _MenuUtamaPageState extends State<MenuUtamaPage> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Card(
-                    child: InkWell(
-                      highlightColor: Colors.deepPurple.shade200,
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ListJadwalPage()));
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        height: 120,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                'assets/schedule.png',
-                              ),
-                              Text(
-                                'Jadwal Pelajaran',
-                                style: TextStyle(fontSize: 24),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
+                  KelasWidget(),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  JadwalWidget(),
                 ],
               ),
             ),
           ),
         ));
+  }
+}
+
+class JadwalWidget extends StatelessWidget {
+  const JadwalWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: InkWell(
+        highlightColor: Colors.deepPurple.shade200,
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => ListJadwalPage()));
+        },
+        child: Container(
+          width: double.infinity,
+          height: 120,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Image.asset(
+                  'assets/schedule.png',
+                ),
+                Text(
+                  'Jadwal Pelajaran',
+                  style: TextStyle(fontSize: 24),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class KelasWidget extends StatelessWidget {
+  const KelasWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: InkWell(
+        highlightColor: Colors.deepPurple.shade200,
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => ListKelasPage()));
+        },
+        child: Container(
+          width: double.infinity,
+          height: 120,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Image.asset(
+                  'assets/class.png',
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'Daftar Kelas',
+                  style: TextStyle(fontSize: 24),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

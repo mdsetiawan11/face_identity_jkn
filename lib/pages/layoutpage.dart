@@ -35,14 +35,13 @@ class _LayoutPageState extends State<LayoutPage> {
     _mlKitService.initialize();
   }
 
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
   final List<Widget> _pages = [
-    ListKelasPage(),
     MenuUtamaPage(),
-    AbsenPage(),
+    Text('profil'),
   ];
   @override
   Widget build(BuildContext context) {
@@ -50,8 +49,8 @@ class _LayoutPageState extends State<LayoutPage> {
       backgroundColor: Colors.grey.shade50,
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
-        height: 55,
-        index: 1,
+        height: 60,
+        index: 0,
         onTap: (index) {
           setState(() {
             _selectedIndex = index;
@@ -59,10 +58,6 @@ class _LayoutPageState extends State<LayoutPage> {
         },
         letIndexChange: (index) => true,
         items: [
-          Icon(
-            Icons.checklist_rounded,
-            color: Colors.white,
-          ),
           Icon(
             Icons.dashboard,
             color: Colors.white,

@@ -15,7 +15,15 @@ import 'package:face_net_authentication/helpers/services/ml_service.dart';
 import 'package:flutter/material.dart';
 
 class AbsenPage extends StatefulWidget {
-  const AbsenPage({Key? key}) : super(key: key);
+  final String idjadwal;
+  final String nmmapel;
+  final String nmkelas;
+  const AbsenPage(
+      {Key? key,
+      required this.idjadwal,
+      required this.nmmapel,
+      required this.nmkelas})
+      : super(key: key);
 
   @override
   AbsenPageState createState() => AbsenPageState();
@@ -123,7 +131,7 @@ class AbsenPageState extends State<AbsenPage> {
         children: [
           body,
           CameraHeader(
-            "Kirim Absen",
+            "Absen " + widget.nmmapel + " Kelas " + widget.nmkelas,
             onBackPressed: _onBackPressed,
           )
         ],
@@ -142,5 +150,12 @@ class AbsenPageState extends State<AbsenPage> {
             style: TextStyle(fontSize: 20),
           ),
         )
-      : KirimAbsen(siswa: siswa);
+      : KirimAbsen(
+          siswa: siswa,
+          idsiswa: siswa.idsiswa,
+          nmsiswa: siswa.nmsiswa,
+          idjadwal: widget.idjadwal,
+          nmmapel: widget.nmmapel,
+          nmkelas: widget.nmkelas,
+        );
 }
