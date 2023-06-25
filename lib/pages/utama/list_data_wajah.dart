@@ -21,6 +21,23 @@ class _ListDataWajahState extends State<ListDataWajah> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.white,
+        title: const Text(
+          'Data Wajah',
+          style: TextStyle(color: Colors.white),
+        ),
+        automaticallyImplyLeading: true,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              color: Colors.deepPurple.shade800,
+              borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30))),
+        ),
+      ),
       body: FutureBuilder<List<Siswa>>(
           future: dbHelper.queryAllSiswa(),
           builder: (context, snapshot) {
@@ -29,14 +46,13 @@ class _ListDataWajahState extends State<ListDataWajah> {
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
                     return ListTile(
-                      title: Text(snapshot.data![index].modelData.toString()),
-                      subtitle: Text(snapshot.data![index].nmsiswa),
+                      title: Text(snapshot.data![index].nmsiswa),
                     );
                   });
             } else {
               return Center(
                 child: CircularProgressIndicator(
-                  color: Colors.deepPurple,
+                  color: Colors.deepPurple.shade800,
                 ),
               );
             }

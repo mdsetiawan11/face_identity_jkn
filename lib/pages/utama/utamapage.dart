@@ -1,5 +1,7 @@
 import 'package:face_net_authentication/pages/jadwal/list_jadwal.dart';
 import 'package:face_net_authentication/pages/kelas/list_kelas.dart';
+import 'package:face_net_authentication/pages/rekap/rekapabsenpage.dart';
+import 'package:face_net_authentication/pages/utama/list_data_wajah.dart';
 import 'package:flutter/material.dart';
 
 class MenuUtamaPage extends StatefulWidget {
@@ -41,6 +43,12 @@ class _MenuUtamaPageState extends State<MenuUtamaPage> {
                     height: 10,
                   ),
                   JadwalWidget(),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  // DataWajahWidget(),
+                  // SizedBox( height: 10, ),
+                  RekapAbsenWidget(),
                 ],
               ),
             ),
@@ -114,7 +122,87 @@ class KelasWidget extends StatelessWidget {
                   width: 10,
                 ),
                 Text(
-                  'Daftar Kelas',
+                  'Kelas',
+                  style: TextStyle(fontSize: 24),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class DataWajahWidget extends StatelessWidget {
+  const DataWajahWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: InkWell(
+        highlightColor: Colors.deepPurple.shade200,
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => ListDataWajah()));
+        },
+        child: Container(
+          width: double.infinity,
+          height: 120,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Image.asset(
+                  'assets/face-recognition.png',
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'Data Wajah Siswa',
+                  style: TextStyle(fontSize: 24),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class RekapAbsenWidget extends StatelessWidget {
+  const RekapAbsenWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: InkWell(
+        highlightColor: Colors.deepPurple.shade200,
+        onTap: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => RekapAbsensi()));
+        },
+        child: Container(
+          width: double.infinity,
+          height: 120,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Image.asset(
+                  'assets/report.png',
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'Rekap Absensi',
                   style: TextStyle(fontSize: 24),
                 )
               ],

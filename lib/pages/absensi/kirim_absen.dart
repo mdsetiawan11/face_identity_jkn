@@ -97,20 +97,35 @@ class _KirimAbsenState extends State<KirimAbsen> {
       );
       var data = jsonDecode(response.body);
       print(data);
-      if (data == 'Absensi Terkirim') {
+      if (data ==
+          "Absensi sudah Terkirim, silahkan lanjut ke siswa berikutnya") {
         Fluttertoast.showToast(
-          msg: 'Absensi Berhasil',
+          msg: 'Absensi sudah Terkirim, silahkan lanjut ke siswa berikutnya',
+          fontSize: 16,
           gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.yellow.shade800,
           textColor: Colors.white,
         );
+        Navigator.of(context).pop();
       } else {
-        Fluttertoast.showToast(
-          msg: 'Absensi gagal, silahkan dicoba kembali',
-          gravity: ToastGravity.CENTER,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-        );
+        if (data == 'Absensi Terkirim') {
+          Fluttertoast.showToast(
+            msg: 'Absensi Berhasil',
+            fontSize: 16,
+            gravity: ToastGravity.CENTER,
+            backgroundColor: Colors.green,
+            textColor: Colors.white,
+          );
+          Navigator.of(context).pop();
+        } else {
+          Fluttertoast.showToast(
+            msg: 'Absensi gagal, silahkan dicoba kembali',
+            gravity: ToastGravity.CENTER,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+          );
+          Navigator.of(context).pop();
+        }
       }
     } catch (e) {
       Fluttertoast.showToast(
@@ -119,7 +134,7 @@ class _KirimAbsenState extends State<KirimAbsen> {
         backgroundColor: Colors.red,
         textColor: Colors.white,
       );
+      Navigator.of(context).pop();
     }
-    Navigator.of(context).pop();
   }
 }
