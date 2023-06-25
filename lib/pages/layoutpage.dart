@@ -3,6 +3,7 @@ import 'package:face_net_authentication/locator.dart';
 import 'package:face_net_authentication/helpers/services/camera.service.dart';
 import 'package:face_net_authentication/helpers/services/face_detector_service.dart';
 import 'package:face_net_authentication/helpers/services/ml_service.dart';
+import 'package:face_net_authentication/pages/profil/profilpage.dart';
 import 'package:face_net_authentication/pages/utama/utamapage.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -38,7 +39,7 @@ class _LayoutPageState extends State<LayoutPage> {
 
   final List<Widget> _pages = [
     MenuUtamaPage(),
-    Text('profil'),
+    ProfilPage(),
   ];
   @override
   Widget build(BuildContext context) {

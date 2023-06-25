@@ -228,10 +228,10 @@ packages:
     dependency: "direct main"
     description:
       name: google_fonts
-      sha256: db5efba8106bd784a92c96cfd81716f4e06baab54e37de858488e9a00a764cad
+      sha256: e20ff62b158b96f392bfc8afe29dee1503c94fbea2cbe8186fd59b756b8ae982
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.0"
+    version: "5.1.0"
   google_ml_kit:
     dependency: "direct main"
     description:
@@ -408,6 +408,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.0"
+  material_dialogs:
+    dependency: "direct main"
+    description:
+      name: material_dialogs
+      sha256: "7828b8e70e5227c1fc2bcdf5c3ac4f22049b9ead6bae96a44ca55a4c7b8da949"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.4"
   meta:
     dependency: transitive
     description:
