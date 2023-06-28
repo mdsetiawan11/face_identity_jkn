@@ -25,7 +25,7 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
 
       idguru = (localStorage.getString('idguru') ?? '');
 
-      var url = Uri.parse('http://192.168.1.9/siabsensi/api/jadwal/' + idguru);
+      var url = Uri.parse('http://192.168.1.6/siabsensi/api/jadwal/' + idguru);
       var response = await http.get(url);
       var data = json.decode(response.body);
       print(data);

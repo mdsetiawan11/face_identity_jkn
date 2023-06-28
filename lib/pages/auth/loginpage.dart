@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Future login() async {
     try {
-      var url = Uri.parse('http://192.168.1.9/siabsensi/api/login');
+      var url = Uri.parse('http://192.168.1.6/siabsensi/api/login');
       var response = await http.post(
         url,
         body: {

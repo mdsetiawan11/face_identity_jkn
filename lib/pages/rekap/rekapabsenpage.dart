@@ -25,7 +25,7 @@ class _RekapAbsensiState extends State<RekapAbsensi> {
 
       idguru = (localStorage.getString('idguru') ?? '');
 
-      var url = Uri.parse('http://192.168.1.9/siabsensi/api/absensi/' + idguru);
+      var url = Uri.parse('http://192.168.1.6/siabsensi/api/absensi/' + idguru);
       var response = await http.get(url);
       var data = json.decode(response.body);
       print(data);
