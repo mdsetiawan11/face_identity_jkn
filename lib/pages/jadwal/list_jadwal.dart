@@ -5,8 +5,12 @@ import 'package:face_net_authentication/pages/jadwal/jadwal.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:material_dialogs/dialogs.dart';
+import 'package:material_dialogs/widgets/buttons/icon_button.dart';
+import 'package:material_dialogs/widgets/buttons/icon_outline_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class ListJadwalPage extends StatefulWidget {
   const ListJadwalPage({super.key});
@@ -25,7 +29,7 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
 
       idguru = (localStorage.getString('idguru') ?? '');
 
-      var url = Uri.parse('http://192.168.1.6/siabsensi/api/jadwal/' + idguru);
+      var url = Uri.parse('http://192.168.1.7/siabsensi/api/jadwal/' + idguru);
       var response = await http.get(url);
       var data = json.decode(response.body);
       print(data);
@@ -62,7 +66,7 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.white,
         title: const Text(
-          'Jadwal Pelajaran',
+          'Mata Pelajaran',
           style: TextStyle(color: Colors.white),
         ),
         automaticallyImplyLeading: true,
@@ -84,49 +88,90 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
                   itemCount: listjadwal.length,
                   itemBuilder: (context, index) {
                     return Card(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AbsenPage(
-                                        idjadwal: listjadwal[index].idjadwal,
-                                        nmmapel: listjadwal[index].nmmapel,
-                                        nmkelas: listjadwal[index].nmkelas,
-                                      )));
-                        },
-                        highlightColor: Colors.deepPurple.shade200,
-                        child: Container(
-                          width: double.infinity,
-                          height: 100,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      listjadwal[index].nmmapel,
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                    Text(
-                                      'Hari : ' + listjadwal[index].hari,
-                                      style: TextStyle(fontSize: 16),
-                                    ),
-                                    Text(
-                                      'Kelas : ' + listjadwal[index].nmkelas,
-                                      style: TextStyle(fontSize: 16),
-                                    )
-                                  ],
-                                ),
-                                Image.asset(
-                                  'assets/face-recognition.png',
-                                ),
-                              ],
+                      child: Slidable(
+                        startActionPane: ActionPane(
+                          motion: const ScrollMotion(),
+                          children: [
+                            // A SlidableAction can have an icon and/or a label.
+                            SlidableAction(
+                              onPressed: (context) => nonaktif(
+                                listjadwal[index].idjadwal,
+                                listjadwal[index].nmmapel,
+                                listjadwal[index].nmkelas,
+                              ),
+                              backgroundColor: Color(0xFFFE4A49),
+                              foregroundColor: Colors.white,
+                              icon: Icons.close,
+                              label: 'Nonaktifkan',
+                            ),
+                          ],
+                        ),
+                        endActionPane: ActionPane(
+                          motion: const ScrollMotion(),
+                          children: [
+                            // A SlidableAction can have an icon and/or a label.
+                            SlidableAction(
+                              onPressed: (context) => aktif(
+                                  listjadwal[index].idjadwal,
+                                  listjadwal[index].nmmapel,
+                                  listjadwal[index].nmkelas),
+                              backgroundColor: Colors.green,
+                              foregroundColor: Colors.white,
+                              icon: Icons.check,
+                              label: 'Aktifkan',
+                            ),
+                          ],
+                        ),
+                        child: InkWell(
+                          //onTap: () {
+                          //  Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => AbsenPage(
+                          //               idjadwal: listjadwal[index].idjadwal,
+                          //               nmmapel: listjadwal[index].nmmapel,
+                          //               nmkelas: listjadwal[index].nmkelas,
+                          //            )));
+                          //  },
+                          highlightColor: Colors.deepPurple.shade200,
+                          child: Container(
+                            width: double.infinity,
+                            height: 130,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        listjadwal[index].nmmapel,
+                                        style: TextStyle(fontSize: 18),
+                                      ),
+                                      Text(
+                                        'Hari : ' + listjadwal[index].hari,
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      Text(
+                                        'Kelas : ' + listjadwal[index].nmkelas,
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      Text(
+                                        'Status : ' + listjadwal[index].status,
+                                        style: TextStyle(fontSize: 16),
+                                      )
+                                    ],
+                                  ),
+                                  Image.asset(
+                                    'assets/books.png',
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -142,5 +187,63 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
             }
           }),
     );
+  }
+
+  void aktif(String idjadwal, String nmmapel, String nmkelas) {
+    Dialogs.materialDialog(
+        msg:
+            'Apakah anda yakin ingin mengaktifkan mata pelajaran $nmmapel kelas $nmkelas ?',
+        title: "Aktifkan",
+        color: Colors.white,
+        context: context,
+        actions: [
+          IconsButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            text: 'Batal',
+            iconData: Icons.cancel,
+            color: Colors.red,
+            textStyle: TextStyle(color: Colors.white),
+            iconColor: Colors.white,
+          ),
+          IconsButton(
+            onPressed: () {},
+            text: 'Ya',
+            iconData: Icons.check,
+            color: Colors.green,
+            textStyle: TextStyle(color: Colors.white),
+            iconColor: Colors.white,
+          ),
+        ]);
+  }
+
+  void nonaktif(String idjadwal, String nmmapel, String nmkelas) {
+    Dialogs.materialDialog(
+        msg:
+            'Apakah anda yakin ingin menonaktifkan mata pelajaran $nmmapel kelas $nmkelas?',
+        title: "Nonaktifkan",
+        color: Colors.white,
+        context: context,
+        actions: [
+          IconsButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            text: 'Batal',
+            iconData: Icons.cancel,
+            color: Colors.red,
+            textStyle: TextStyle(color: Colors.white),
+            iconColor: Colors.white,
+          ),
+          IconsButton(
+            onPressed: () {},
+            text: 'Ya',
+            iconData: Icons.check,
+            color: Colors.green,
+            textStyle: TextStyle(color: Colors.white),
+            iconColor: Colors.white,
+          ),
+        ]);
   }
 }

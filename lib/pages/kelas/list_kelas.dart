@@ -25,7 +25,7 @@ class _ListKelasPageState extends State<ListKelasPage> {
 
       idguru = (localStorage.getString('idguru') ?? '');
 
-      var url = Uri.parse('http://192.168.1.6/siabsensi/api/jadwal/' + idguru);
+      var url = Uri.parse('http://192.168.1.7/siabsensi/api/jadwal/' + idguru);
       var response = await http.get(url);
       var data = json.decode(response.body);
       print(data);
@@ -62,7 +62,7 @@ class _ListKelasPageState extends State<ListKelasPage> {
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.white,
         title: const Text(
-          'Kelas',
+          'Tambah Data Wajah',
           style: TextStyle(color: Colors.white),
         ),
         automaticallyImplyLeading: true,

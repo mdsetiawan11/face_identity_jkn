@@ -38,6 +38,35 @@ class _MenuUtamaPageState extends State<MenuUtamaPage> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
+                  SizedBox(
+                    height: 10,
+                  ),
+                  SizedBox(
+                    width: 200,
+                    height: MediaQuery.of(context).size.height / 4,
+                    child: InkWell(
+                      onTap: () {
+                        print('object');
+                      },
+                      highlightColor: Colors.deepPurple.shade200,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Image.asset(
+                            'assets/face-recognition.png',
+                            width: 180,
+                          ),
+                          Text(
+                            'Absensi Wajah',
+                            style: TextStyle(fontSize: 24),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   KelasWidget(),
                   SizedBox(
                     height: 10,
@@ -79,10 +108,10 @@ class JadwalWidget extends StatelessWidget {
             child: Row(
               children: [
                 Image.asset(
-                  'assets/schedule.png',
+                  'assets/books.png',
                 ),
                 Text(
-                  'Jadwal Pelajaran',
+                  'Mata Pelajaran',
                   style: TextStyle(fontSize: 24),
                 )
               ],
@@ -116,13 +145,13 @@ class KelasWidget extends StatelessWidget {
             child: Row(
               children: [
                 Image.asset(
-                  'assets/class.png',
+                  'assets/add-friend.png',
                 ),
                 SizedBox(
                   width: 10,
                 ),
                 Text(
-                  'Kelas',
+                  'Tambah Data Wajah',
                   style: TextStyle(fontSize: 24),
                 )
               ],
