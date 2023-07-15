@@ -111,6 +111,7 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
                             SlidableAction(
                               onPressed: (context) => aktif(
                                   listjadwal[index].idjadwal,
+                                  listjadwal[index].idguru,
                                   listjadwal[index].nmmapel,
                                   listjadwal[index].nmkelas),
                               backgroundColor: Colors.green,
@@ -187,7 +188,7 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
     );
   }
 
-  void aktif(String idjadwal, String nmmapel, String nmkelas) {
+  void aktif(String idjadwal, String nmmapel, String nmkelas, String idguru) {
     Dialogs.materialDialog(
         msg:
             'Apakah anda yakin ingin mengaktifkan mata pelajaran $nmmapel kelas $nmkelas ?',
@@ -206,7 +207,46 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
             iconColor: Colors.white,
           ),
           IconsButton(
-            onPressed: () {},
+            onPressed: () async {
+              try {
+                var url =
+                    Uri.parse('http://192.168.1.7/siabsensi/api/aktifkan/');
+                var response = await http.put(
+                  url,
+                  body: {
+                    "idjadwal": idjadwal,
+                    "idguru": idguru,
+                  },
+                );
+
+                if (response.statusCode == 200) {
+                  setState(() {
+                    listjadwal = [];
+                  });
+                  Fluttertoast.showToast(
+                    msg: 'Mata Pelajaran Berhasil diaktifkan',
+                    gravity: ToastGravity.CENTER,
+                    backgroundColor: Colors.green,
+                    textColor: Colors.white,
+                  );
+                } else {
+                  Fluttertoast.showToast(
+                    msg: 'Gagal, silahkan coba lagi',
+                    gravity: ToastGravity.CENTER,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                  );
+                }
+              } catch (e) {
+                Fluttertoast.showToast(
+                  msg: 'Gagal, silahkan coba lagi',
+                  gravity: ToastGravity.CENTER,
+                  backgroundColor: Colors.red,
+                  textColor: Colors.white,
+                );
+              }
+              Navigator.of(context).pop();
+            },
             text: 'Ya',
             iconData: Icons.check,
             color: Colors.green,
@@ -235,7 +275,45 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
             iconColor: Colors.white,
           ),
           IconsButton(
-            onPressed: () {},
+            onPressed: () async {
+              try {
+                var url =
+                    Uri.parse('http://192.168.1.7/siabsensi/api/nonaktifkan/');
+                var response = await http.put(
+                  url,
+                  body: {
+                    "idjadwal": idjadwal,
+                  },
+                );
+
+                if (response.statusCode == 200) {
+                  setState(() {
+                    listjadwal = [];
+                  });
+                  Fluttertoast.showToast(
+                    msg: 'Mata Pelajaran Berhasil dinonaktifkan',
+                    gravity: ToastGravity.CENTER,
+                    backgroundColor: Colors.green,
+                    textColor: Colors.white,
+                  );
+                } else {
+                  Fluttertoast.showToast(
+                    msg: 'Gagal, silahkan coba lagi',
+                    gravity: ToastGravity.CENTER,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                  );
+                }
+              } catch (e) {
+                Fluttertoast.showToast(
+                  msg: 'Gagal, silahkan coba lagi',
+                  gravity: ToastGravity.CENTER,
+                  backgroundColor: Colors.red,
+                  textColor: Colors.white,
+                );
+              }
+              Navigator.of(context).pop();
+            },
             text: 'Ya',
             iconData: Icons.check,
             color: Colors.green,
