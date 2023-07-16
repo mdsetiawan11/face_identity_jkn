@@ -44,7 +44,7 @@ class _ProfilPageState extends State<ProfilPage> {
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
         title: Text(
-          'Profil',
+          'Profil Guru',
           style: TextStyle(
             color: Colors.white,
           ),

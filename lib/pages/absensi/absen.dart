@@ -12,6 +12,7 @@ import 'package:face_net_authentication/helpers/widgets/single_picture.dart';
 import 'package:face_net_authentication/helpers/services/camera.service.dart';
 import 'package:face_net_authentication/helpers/services/face_detector_service.dart';
 import 'package:face_net_authentication/helpers/services/ml_service.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
@@ -56,14 +57,24 @@ class AbsenPageState extends State<AbsenPage> {
     });
     var url = Uri.parse('http://192.168.1.7/siabsensi/api/jadwalaktif');
     var response = await http.post(url, body: {"idguru": idguru});
-    var data = await json.decode(response.body) as Map<String, dynamic>;
 
-    print(data);
-    setState(() {
-      idjadwal = data['idjadwal'];
-      nmmapel = data['nmmapel'];
-      nmkelas = data['nmkelas'];
-    });
+    if (response.statusCode == 200) {
+      var data = await json.decode(response.body) as Map<String, dynamic>;
+      print(data);
+      setState(() {
+        idjadwal = data['idjadwal'];
+        nmmapel = data['nmmapel'];
+        nmkelas = data['nmkelas'];
+      });
+    } else {
+      Fluttertoast.showToast(
+        msg: 'Tidak ada mata pelajaran yang aktif',
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+      );
+      Navigator.of(context).pop();
+    }
   }
 
   @override

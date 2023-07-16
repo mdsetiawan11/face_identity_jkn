@@ -218,18 +218,6 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
                     "idguru": idguru,
                   },
                 );
-
-                if (response.statusCode == 200) {
-                  setState(() {
-                    listjadwal = [];
-                  });
-                  Fluttertoast.showToast(
-                    msg: 'Mata Pelajaran Berhasil diaktifkan',
-                    gravity: ToastGravity.CENTER,
-                    backgroundColor: Colors.green,
-                    textColor: Colors.white,
-                  );
-                }
                 if (response.statusCode == 400) {
                   setState(() {
                     listjadwal = [];
@@ -242,10 +230,13 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
                     textColor: Colors.white,
                   );
                 } else {
+                  setState(() {
+                    listjadwal = [];
+                  });
                   Fluttertoast.showToast(
-                    msg: 'Gagal, silahkan coba lagi',
+                    msg: 'Mata Pelajaran Berhasil diaktifkan',
                     gravity: ToastGravity.CENTER,
-                    backgroundColor: Colors.red,
+                    backgroundColor: Colors.green,
                     textColor: Colors.white,
                   );
                 }
