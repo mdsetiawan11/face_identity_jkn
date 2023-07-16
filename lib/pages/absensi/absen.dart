@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:camera/camera.dart';
 import 'package:face_net_authentication/locator.dart';
@@ -11,19 +12,15 @@ import 'package:face_net_authentication/helpers/widgets/single_picture.dart';
 import 'package:face_net_authentication/helpers/services/camera.service.dart';
 import 'package:face_net_authentication/helpers/services/face_detector_service.dart';
 import 'package:face_net_authentication/helpers/services/ml_service.dart';
+import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AbsenPage extends StatefulWidget {
-  final String idjadwal;
-  final String nmmapel;
-  final String nmkelas;
-  const AbsenPage(
-      {Key? key,
-      required this.idjadwal,
-      required this.nmmapel,
-      required this.nmkelas})
-      : super(key: key);
+  const AbsenPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   AbsenPageState createState() => AbsenPageState();
@@ -39,10 +36,34 @@ class AbsenPageState extends State<AbsenPage> {
   bool _isPictureTaken = false;
   bool _isInitializing = false;
 
+  String idjadwal = '';
+  String nmmapel = '';
+  String nmkelas = '';
+  String idguru = '';
+
   @override
   void initState() {
     super.initState();
     _start();
+    getJadwalAktif();
+  }
+
+  getJadwalAktif() async {
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    setState(() {
+      idguru = (localStorage.getString('idguru') ?? '');
+      print(idguru);
+    });
+    var url = Uri.parse('http://192.168.1.7/siabsensi/api/jadwalaktif');
+    var response = await http.post(url, body: {"idguru": idguru});
+    var data = await json.decode(response.body) as Map<String, dynamic>;
+
+    print(data);
+    setState(() {
+      idjadwal = data['idjadwal'];
+      nmmapel = data['nmmapel'];
+      nmkelas = data['nmkelas'];
+    });
   }
 
   @override
@@ -131,7 +152,7 @@ class AbsenPageState extends State<AbsenPage> {
         children: [
           body,
           CameraHeader(
-            "Absen " + widget.nmmapel + " Kelas " + widget.nmkelas,
+            "Absensi Wajah " + nmmapel + ' ' + nmkelas,
             onBackPressed: _onBackPressed,
           )
         ],
@@ -154,8 +175,8 @@ class AbsenPageState extends State<AbsenPage> {
           siswa: siswa,
           idsiswa: siswa.idsiswa,
           nmsiswa: siswa.nmsiswa,
-          idjadwal: widget.idjadwal,
-          nmmapel: widget.nmmapel,
-          nmkelas: widget.nmkelas,
+          idjadwal: idjadwal,
+          nmmapel: nmmapel,
+          nmkelas: nmkelas,
         );
 }

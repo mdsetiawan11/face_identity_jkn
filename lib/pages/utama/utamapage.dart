@@ -1,3 +1,4 @@
+import 'package:face_net_authentication/pages/absensi/absen.dart';
 import 'package:face_net_authentication/pages/jadwal/list_jadwal.dart';
 import 'package:face_net_authentication/pages/kelas/list_kelas.dart';
 import 'package:face_net_authentication/pages/rekap/rekapabsenpage.dart';
@@ -46,7 +47,10 @@ class _MenuUtamaPageState extends State<MenuUtamaPage> {
                     height: MediaQuery.of(context).size.height / 4,
                     child: InkWell(
                       onTap: () {
-                        print('object');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AbsenPage()));
                       },
                       highlightColor: Colors.deepPurple.shade200,
                       child: Column(

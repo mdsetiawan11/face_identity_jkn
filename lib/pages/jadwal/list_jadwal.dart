@@ -188,7 +188,7 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
     );
   }
 
-  void aktif(String idjadwal, String nmmapel, String nmkelas, String idguru) {
+  void aktif(String idjadwal, String idguru, String nmmapel, String nmkelas) {
     Dialogs.materialDialog(
         msg:
             'Apakah anda yakin ingin mengaktifkan mata pelajaran $nmmapel kelas $nmkelas ?',
@@ -227,6 +227,18 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
                     msg: 'Mata Pelajaran Berhasil diaktifkan',
                     gravity: ToastGravity.CENTER,
                     backgroundColor: Colors.green,
+                    textColor: Colors.white,
+                  );
+                }
+                if (response.statusCode == 400) {
+                  setState(() {
+                    listjadwal = [];
+                  });
+                  Fluttertoast.showToast(
+                    msg:
+                        'Masih ada mata pelajaran yang aktif, mohon nonaktifkan terlebih dahulu',
+                    gravity: ToastGravity.CENTER,
+                    backgroundColor: Colors.orange,
                     textColor: Colors.white,
                   );
                 } else {
