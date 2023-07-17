@@ -87,7 +87,7 @@ class _KirimAbsenState extends State<KirimAbsen> {
 
   Future kirimAbsenAct(context) async {
     try {
-      var url = Uri.parse('http://192.168.1.7/siabsensi/api/absen');
+      var url = Uri.parse('https://siabsensi.jekaen-pky.com/api/absen');
       var response = await http.post(
         url,
         body: {
