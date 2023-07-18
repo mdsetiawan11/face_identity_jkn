@@ -73,7 +73,7 @@ class LandingPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        'Selamat Datang',
+                        'Selamat Datang di',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 30,
@@ -84,10 +84,10 @@ class LandingPage extends StatelessWidget {
                         height: 10,
                       ),
                       const Text(
-                        'Aplikasi Absensi',
+                        'Aplikasi Absensi SDN Kedung Ringin III',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 21,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),

@@ -20,7 +20,7 @@ class _MenuUtamaPageState extends State<MenuUtamaPage> {
           elevation: 0,
           backgroundColor: Colors.transparent,
           title: const Text(
-            'Menu Utama',
+            'Absensi SDN Kedung Ringin III',
             style: TextStyle(color: Colors.white),
           ),
           automaticallyImplyLeading: false,

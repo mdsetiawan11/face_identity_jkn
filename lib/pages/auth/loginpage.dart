@@ -97,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                       height: 10,
                     ),
                     const Text(
-                      'Aplikasi Absensi',
+                      'Login',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,

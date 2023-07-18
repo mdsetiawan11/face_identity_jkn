@@ -281,8 +281,8 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
           IconsButton(
             onPressed: () async {
               try {
-                var url =
-                    Uri.parse('http://192.168.1.7/siabsensi/api/nonaktifkan/');
+                var url = Uri.parse(
+                    'https://siabsensi.jekaen-pky.com/api/nonaktifkan/');
                 var response = await http.put(
                   url,
                   body: {
