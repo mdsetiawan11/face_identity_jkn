@@ -55,7 +55,8 @@ class AbsenPageState extends State<AbsenPage> {
       idguru = (localStorage.getString('idguru') ?? '');
       print(idguru);
     });
-    var url = Uri.parse('https://siabsensi.jekaen-pky.com/api/jadwalaktif');
+    var url =
+        Uri.parse('https://sometime-rakes.000webhostapp.com/api/jadwalaktif');
     var response = await http.post(url, body: {"idguru": idguru});
 
     if (response.statusCode == 200) {

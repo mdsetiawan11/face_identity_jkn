@@ -25,8 +25,8 @@ class _ListKelasPageState extends State<ListKelasPage> {
 
       idguru = (localStorage.getString('idguru') ?? '');
 
-      var url =
-          Uri.parse('https://siabsensi.jekaen-pky.com/api/jadwal/' + idguru);
+      var url = Uri.parse(
+          'https://sometime-rakes.000webhostapp.com/api/jadwal/' + idguru);
       var response = await http.get(url);
       var data = json.decode(response.body);
       print(data);

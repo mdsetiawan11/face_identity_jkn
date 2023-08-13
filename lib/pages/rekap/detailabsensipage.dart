@@ -30,7 +30,8 @@ class _DetailAbsensiPageState extends State<DetailAbsensiPage> {
 
   Future getData() async {
     try {
-      var url = Uri.parse('https://siabsensi.jekaen-pky.com/api/detailabsensi');
+      var url = Uri.parse(
+          'https://sometime-rakes.000webhostapp.com/api/detailabsensi');
       var response = await http.post(
         url,
         body: {

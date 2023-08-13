@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Future login() async {
     try {
-      var url = Uri.parse('https://siabsensi.jekaen-pky.com/api/login');
+      var url = Uri.parse('https://sometime-rakes.000webhostapp.com/api/login');
       var response = await http.post(
         url,
         body: {

@@ -21,7 +21,8 @@ class _ListSiswaPageState extends State<ListSiswaPage> {
   Future getData() async {
     try {
       var url = Uri.parse(
-          'https://siabsensi.jekaen-pky.com/api/siswa/' + widget.nmkelas);
+          'https://sometime-rakes.000webhostapp.com/api/siswa/' +
+              widget.nmkelas);
       var response = await http.get(url);
       var data = json.decode(response.body);
       print(data);

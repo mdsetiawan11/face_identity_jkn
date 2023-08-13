@@ -27,8 +27,8 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
 
       idguru = (localStorage.getString('idguru') ?? '');
 
-      var url =
-          Uri.parse('https://siabsensi.jekaen-pky.com/api/jadwal/' + idguru);
+      var url = Uri.parse(
+          'https://sometime-rakes.000webhostapp.com/api/jadwal/' + idguru);
       var response = await http.get(url);
       var data = json.decode(response.body);
       print(data);
@@ -210,8 +210,8 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
           IconsButton(
             onPressed: () async {
               try {
-                var url =
-                    Uri.parse('https://siabsensi.jekaen-pky.com/api/aktifkan/');
+                var url = Uri.parse(
+                    'https://sometime-rakes.000webhostapp.com/api/aktifkan/');
                 var response = await http.put(
                   url,
                   body: {
@@ -282,7 +282,7 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
             onPressed: () async {
               try {
                 var url = Uri.parse(
-                    'https://siabsensi.jekaen-pky.com/api/nonaktifkan/');
+                    'https://sometime-rakes.000webhostapp.com/api/nonaktifkan/');
                 var response = await http.put(
                   url,
                   body: {
