@@ -212,7 +212,7 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
               try {
                 var url = Uri.parse(
                     'https://sometime-rakes.000webhostapp.com/api/aktifkan/');
-                var response = await http.put(
+                var response = await http.post(
                   url,
                   body: {
                     "idjadwal": idjadwal,
@@ -283,7 +283,7 @@ class _ListJadwalPageState extends State<ListJadwalPage> {
               try {
                 var url = Uri.parse(
                     'https://sometime-rakes.000webhostapp.com/api/nonaktifkan/');
-                var response = await http.put(
+                var response = await http.post(
                   url,
                   body: {
                     "idjadwal": idjadwal,

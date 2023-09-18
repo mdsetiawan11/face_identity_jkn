@@ -9,17 +9,18 @@ class Absensi {
   final String nmmapel;
   final String nmguru;
   final String tgl_absen;
+  final String time;
 
-  Absensi({
-    required this.idabsensi,
-    required this.idsiswa,
-    required this.idguru,
-    required this.idkelas,
-    required this.idmapel,
-    required this.nmsiswa,
-    required this.nmkelas,
-    required this.nmmapel,
-    required this.nmguru,
-    required this.tgl_absen,
-  });
+  Absensi(
+      {required this.idabsensi,
+      required this.idsiswa,
+      required this.idguru,
+      required this.idkelas,
+      required this.idmapel,
+      required this.nmsiswa,
+      required this.nmkelas,
+      required this.nmmapel,
+      required this.nmguru,
+      required this.tgl_absen,
+      required this.time});
 }

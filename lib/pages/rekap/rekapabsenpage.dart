@@ -43,6 +43,7 @@ class _RekapAbsensiState extends State<RekapAbsensi> {
           nmguru: eachAbsensi['nmguru'],
           nmsiswa: eachAbsensi['nmsiswa'],
           tgl_absen: eachAbsensi['tgl_absen'],
+          time: eachAbsensi['time'],
         );
         listabsensi.add(absensiData);
       }

@@ -55,6 +55,7 @@ class _DetailAbsensiPageState extends State<DetailAbsensiPage> {
           nmguru: eachAbsensi['nmguru'],
           nmsiswa: eachAbsensi['nmsiswa'],
           tgl_absen: eachAbsensi['tgl_absen'],
+          time: eachAbsensi['time'],
         );
         listabsensi.add(absensiData);
       }
@@ -120,7 +121,8 @@ class _DetailAbsensiPageState extends State<DetailAbsensiPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text('Nama Siswa'),
-                                    Text('Tanggal Absen')
+                                    Text('Tanggal Absen'),
+                                    Text('Jam Absen')
                                   ],
                                 ),
                                 Column(
@@ -134,6 +136,9 @@ class _DetailAbsensiPageState extends State<DetailAbsensiPage> {
                                     ),
                                     Text(
                                       listabsensi[index].tgl_absen,
+                                    ),
+                                    Text(
+                                      listabsensi[index].time,
                                     ),
                                   ],
                                 ),
