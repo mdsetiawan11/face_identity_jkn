@@ -72,9 +72,9 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.deepPurple.shade800,
+        backgroundColor: Colors.blue.shade900,
         appBar: AppBar(
-          backgroundColor: Colors.deepPurple.shade800,
+          backgroundColor: Colors.blue.shade900,
           iconTheme: const IconThemeData(color: Colors.white),
         ),
         body: Stack(
@@ -123,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                           label: const Text('Username'),
                           icon: Icon(
                             Icons.person,
-                            color: Colors.deepPurple.shade800,
+                            color: Colors.blue.shade900,
                           ),
                         ),
                       ),
@@ -137,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
                           label: const Text('Password'),
                           icon: Icon(
                             Icons.lock,
-                            color: Colors.deepPurple.shade800,
+                            color: Colors.blue.shade900,
                           ),
                           suffixIcon: IconButton(
                             icon: Icon(
@@ -145,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                               _passwordVisible
                                   ? Icons.visibility
                                   : Icons.visibility_off,
-                              color: Colors.deepPurple.shade800,
+                              color: Colors.blue.shade900,
                             ),
                             onPressed: () {
                               // Update the state i.e. toogle the state of passwordVisible variable
@@ -179,7 +179,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                              color: Colors.deepPurple.shade800,
+                              color: Colors.blue.shade900,
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(25))),
                           child: Padding(
@@ -210,10 +210,10 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(
                       height: 15,
                     ),
-                    InkWell(
-                      onTap: () {},
-                      child: const Text('Lupa Password ?'),
-                    )
+                    //InkWell(
+                    // onTap: () {},
+                    // child: const Text('Lupa Password ?'),
+                    //)
                   ],
                 ),
               ),

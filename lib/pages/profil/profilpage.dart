@@ -44,14 +44,14 @@ class _ProfilPageState extends State<ProfilPage> {
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
         title: Text(
-          'Profil Guru',
+          'User',
           style: TextStyle(
             color: Colors.white,
           ),
         ),
         flexibleSpace: Container(
           decoration: BoxDecoration(
-            color: Colors.deepPurple.shade800,
+            color: Colors.blue.shade900,
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(30),
                 bottomRight: Radius.circular(30)),
@@ -63,7 +63,7 @@ class _ProfilPageState extends State<ProfilPage> {
         child: Column(children: [
           Container(
             decoration: BoxDecoration(
-                color: Colors.deepPurple.shade800,
+                color: Colors.blue.shade900,
                 borderRadius: BorderRadius.circular(20)),
             height: MediaQuery.of(context).size.height / 4,
             child: Center(
@@ -71,11 +71,6 @@ class _ProfilPageState extends State<ProfilPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   CircleAvatar(
-                    child: Image(
-                      image: AssetImage('assets/professor.png'),
-                      height: 100,
-                      width: 100,
-                    ),
                     radius: 70,
                     backgroundColor: Colors.white,
                   ),
@@ -98,17 +93,17 @@ class _ProfilPageState extends State<ProfilPage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 1.0),
             child: Card(
-              shape: Border.all(color: Colors.deepPurple.shade800),
+              shape: Border.all(color: Colors.blue.shade900),
               elevation: 0,
               child: Column(
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: MaterialButton(
-                      highlightColor: Colors.deepPurple.shade200,
+                      highlightColor: Colors.blue.shade300,
                       onPressed: () {
                         Dialogs.materialDialog(
-                            msg: 'Apakah anda yakin ingin logout?',
+                            msg: 'Are you sure want to logout?',
                             title: "Logout",
                             color: Colors.white,
                             context: context,
@@ -117,7 +112,7 @@ class _ProfilPageState extends State<ProfilPage> {
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                text: 'Batal',
+                                text: 'Cancel',
                                 iconData: Icons.cancel_outlined,
                                 textStyle: TextStyle(color: Colors.grey),
                                 iconColor: Colors.grey,
@@ -126,7 +121,7 @@ class _ProfilPageState extends State<ProfilPage> {
                                 onPressed: () {
                                   logout();
                                 },
-                                text: 'Ya',
+                                text: 'Yes',
                                 iconData: Icons.logout,
                                 color: Colors.red,
                                 textStyle: TextStyle(color: Colors.white),
@@ -137,7 +132,7 @@ class _ProfilPageState extends State<ProfilPage> {
                       child: ListTile(
                         leading: Icon(
                           Icons.logout,
-                          color: Colors.deepPurple.shade800,
+                          color: Colors.blue.shade900,
                         ),
                         title: Text(
                           'Logout',
@@ -147,7 +142,7 @@ class _ProfilPageState extends State<ProfilPage> {
                               fontSize: 14),
                         ),
                         shape: Border(
-                          bottom: BorderSide(color: Colors.deepPurple.shade800),
+                          bottom: BorderSide(color: Colors.blue.shade900),
                         ),
                       ),
                     ),

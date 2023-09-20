@@ -32,31 +32,41 @@ class _ListDataWajahState extends State<ListDataWajah> {
         automaticallyImplyLeading: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
-              color: Colors.deepPurple.shade800,
+              color: Colors.blue.shade900,
               borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30))),
         ),
       ),
-      body: FutureBuilder<List<Siswa>>(
-          future: dbHelper.queryAllSiswa(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListView.builder(
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(snapshot.data![index].nmsiswa),
-                    );
-                  });
-            } else {
-              return Center(
-                child: CircularProgressIndicator(
-                  color: Colors.deepPurple.shade800,
-                ),
-              );
-            }
-          }),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: FutureBuilder<List<Siswa>>(
+            future: dbHelper.queryAllSiswa(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: ListTile(
+                          title: Text(
+                            snapshot.data![index].nmsiswa,
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          trailing: Icon(Icons.read_more),
+                          onTap: () {},
+                        ),
+                      );
+                    });
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.deepPurple.shade800,
+                  ),
+                );
+              }
+            }),
+      ),
     );
   }
 }

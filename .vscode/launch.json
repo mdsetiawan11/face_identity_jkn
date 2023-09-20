@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "face_absen",
+            "name": "face_identity_jkn",
             "request": "launch",
             "type": "dart",
             "flutterMode": "debug"

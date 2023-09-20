@@ -20,13 +20,13 @@ class _MenuUtamaPageState extends State<MenuUtamaPage> {
           elevation: 0,
           backgroundColor: Colors.transparent,
           title: const Text(
-            'Absensi SDN Kedung Ringin III',
+            'Face Biometrics',
             style: TextStyle(color: Colors.white),
           ),
           automaticallyImplyLeading: false,
           flexibleSpace: Container(
             decoration: BoxDecoration(
-                color: Colors.deepPurple.shade800,
+                color: Colors.blue.shade900,
                 borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(30),
                     bottomRight: Radius.circular(30))),
@@ -34,7 +34,7 @@ class _MenuUtamaPageState extends State<MenuUtamaPage> {
         ),
         body: SingleChildScrollView(
           child: SizedBox(
-            width: double.infinity,
+            width: MediaQuery.of(context).size.width,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -52,16 +52,16 @@ class _MenuUtamaPageState extends State<MenuUtamaPage> {
                             MaterialPageRoute(
                                 builder: (context) => AbsenPage()));
                       },
-                      highlightColor: Colors.deepPurple.shade200,
+                      highlightColor: Colors.blue.shade300,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Image.asset(
                             'assets/face-recognition.png',
-                            width: 180,
+                            width: 160,
                           ),
                           Text(
-                            'Absensi Wajah',
+                            'Face Identification',
                             style: TextStyle(fontSize: 24),
                           )
                         ],
@@ -75,13 +75,11 @@ class _MenuUtamaPageState extends State<MenuUtamaPage> {
                   SizedBox(
                     height: 10,
                   ),
-                  JadwalWidget(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  // DataWajahWidget(),
+                  // JadwalWidget(),
+
+                  DataWajahWidget(),
                   // SizedBox( height: 10, ),
-                  RekapAbsenWidget(),
+                  //RekapAbsenWidget(),
                 ],
               ),
             ),
@@ -136,7 +134,7 @@ class KelasWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: InkWell(
-        highlightColor: Colors.deepPurple.shade200,
+        highlightColor: Colors.blue.shade300,
         onTap: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => ListKelasPage()));
@@ -152,11 +150,11 @@ class KelasWidget extends StatelessWidget {
                   'assets/add-friend.png',
                 ),
                 SizedBox(
-                  width: 10,
+                  width: 25,
                 ),
                 Text(
-                  'Tambah Data Wajah',
-                  style: TextStyle(fontSize: 24),
+                  'Add Face Data',
+                  style: TextStyle(fontSize: 28),
                 )
               ],
             ),
@@ -176,7 +174,7 @@ class DataWajahWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: InkWell(
-        highlightColor: Colors.deepPurple.shade200,
+        highlightColor: Colors.blue.shade300,
         onTap: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => ListDataWajah()));
@@ -189,14 +187,14 @@ class DataWajahWidget extends StatelessWidget {
             child: Row(
               children: [
                 Image.asset(
-                  'assets/face-recognition.png',
+                  'assets/searching.png',
                 ),
                 SizedBox(
-                  width: 10,
+                  width: 25,
                 ),
                 Text(
-                  'Data Wajah Siswa',
-                  style: TextStyle(fontSize: 24),
+                  'Face Data List',
+                  style: TextStyle(fontSize: 28),
                 )
               ],
             ),

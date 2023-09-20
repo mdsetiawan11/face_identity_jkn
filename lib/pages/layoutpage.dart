@@ -66,7 +66,7 @@ class _LayoutPageState extends State<LayoutPage> {
           ),
         ],
         backgroundColor: Colors.grey.shade50,
-        color: Colors.deepPurple.shade800,
+        color: Colors.blue.shade900,
       ),
       body: _pages[_selectedIndex],
     );
