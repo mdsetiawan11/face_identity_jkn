@@ -2,7 +2,7 @@
 xmlns:tools="http://schemas.android.com/tools"
 
 
-    package="com.mdsdev.absensiwajah">
+    package="app.mdsdev.jknfaceidentity">
         
     <uses-permission android:name="android.permission.INTERNET" /> 
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
@@ -12,7 +12,7 @@ xmlns:tools="http://schemas.android.com/tools"
          FlutterApplication and put your custom class here. -->
     <application
         android:name="${applicationName}"
-        android:label="Absensi Wajah"
+        android:label="JKN Face Identity"
         android:icon="@mipmap/ic_launcher"
         android:exported="true"
         >

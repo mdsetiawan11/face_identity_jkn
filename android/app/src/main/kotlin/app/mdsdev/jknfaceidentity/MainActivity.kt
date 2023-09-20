@@ -1,4 +1,4 @@
-package com.mdsdev.absensiwajah
+package app.mdsdev.jknfaceidentity
 
 import io.flutter.embedding.android.FlutterActivity
 
