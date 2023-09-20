@@ -49,6 +49,7 @@ dependencies:
   material_dialogs: ^1.1.4
   change_app_package_name: ^1.1.0
   flutter_slidable: ^3.0.0
+  awesome_dialog: ^3.1.0
 
 dev_dependencies:
   flutter_test:

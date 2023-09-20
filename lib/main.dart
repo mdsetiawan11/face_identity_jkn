@@ -10,13 +10,13 @@ Future<void> main() async {
   setupServices();
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences localStorage = await SharedPreferences.getInstance();
-  var idguru = (localStorage.getString('idguru') ?? '');
-  runApp(MyApp(idguru: idguru));
+  var id = (localStorage.getString('id') ?? '');
+  runApp(MyApp(id: id));
 }
 
 class MyApp extends StatelessWidget {
-  final String idguru;
-  const MyApp({super.key, required this.idguru});
+  final String id;
+  const MyApp({super.key, required this.id});
 
   // This widget is the root of your application.
   @override
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
       ),
-      home: idguru == "" ? const LandingPage() : const LayoutPage(),
+      home: id == "" ? const LandingPage() : const LayoutPage(),
     );
   }
 }

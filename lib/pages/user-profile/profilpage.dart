@@ -13,12 +13,12 @@ class ProfilPage extends StatefulWidget {
 }
 
 class _ProfilPageState extends State<ProfilPage> {
-  String idguru = '';
-  String nmguru = '';
+  String id = '';
+  String nama = '';
 
   logout() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
-    localStorage.remove('idguru');
+    localStorage.remove('id');
 
     Navigator.pushReplacement(context,
         MaterialPageRoute(builder: (BuildContext context) => LandingPage()));
@@ -33,7 +33,7 @@ class _ProfilPageState extends State<ProfilPage> {
   getData() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     setState(() {
-      nmguru = (localStorage.getString('nmguru') ?? '');
+      nama = (localStorage.getString('nama') ?? '');
     });
   }
 
@@ -76,7 +76,7 @@ class _ProfilPageState extends State<ProfilPage> {
                   ),
                   Container(
                     child: Text(
-                      nmguru.toString(),
+                      nama.toString(),
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,

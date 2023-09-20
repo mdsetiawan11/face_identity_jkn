@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:face_net_authentication/helpers/db/class_peserta.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -46,7 +47,7 @@ class _FindDataState extends State<FindData> {
           ),
           MaterialButton(
             color: Colors.white,
-            textColor: Colors.deepPurple.shade800,
+            textColor: Colors.blue.shade900,
             onPressed: () async {
               await kirimAbsenAct(context);
             },
@@ -70,7 +71,7 @@ class _FindDataState extends State<FindData> {
       print(data);
     } catch (e) {
       Fluttertoast.showToast(
-        msg: 'Absensi gagal, silahkan dicoba kembali',
+        msg: 'Find Data Failed!',
         gravity: ToastGravity.CENTER,
         backgroundColor: Colors.red,
         textColor: Colors.white,
