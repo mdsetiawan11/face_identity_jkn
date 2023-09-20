@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Future login() async {
     try {
-      var url = Uri.parse('https://sometime-rakes.000webhostapp.com/api/login');
+      var url = Uri.parse('https://faceidentity.jekaen-pky.com/api/login');
       var response = await http.post(
         url,
         body: {
@@ -54,8 +54,8 @@ class _LoginPageState extends State<LoginPage> {
       } else {
         final localStorage = await SharedPreferences.getInstance();
         await localStorage.setString("username", data['username']);
-        await localStorage.setString("nmguru", data['nmguru']);
-        await localStorage.setString("idguru", data['idguru']);
+        await localStorage.setString("nama", data['nama']);
+        await localStorage.setString("id", data['id']);
 
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => LayoutPage()));

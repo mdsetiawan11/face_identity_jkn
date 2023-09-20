@@ -69,7 +69,7 @@ class AddFaceDataState extends State<AddFaceData> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            content: Text('Tidak ada wajah terdeteksi!'),
+            content: Text('Face not found!'),
           );
         },
       );

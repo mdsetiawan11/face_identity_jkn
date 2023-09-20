@@ -1,4 +1,5 @@
 import 'package:face_net_authentication/helpers/add-face-service/add_face_data.dart';
+import 'package:face_net_authentication/pages/utama/face_recognition.dart';
 import 'package:face_net_authentication/pages/utama/list_data_wajah.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -44,7 +45,12 @@ class _MenuUtamaPageState extends State<MenuUtamaPage> {
                     width: 200,
                     height: MediaQuery.of(context).size.height / 4,
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => FaceRecognitionPage()));
+                      },
                       highlightColor: Colors.grey.shade200,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,

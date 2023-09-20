@@ -39,7 +39,7 @@ class SaveFaceDataNIKState extends State<SaveFaceDataNIK> {
     await databaseHelper.insert(dataToSave);
     _mlService.setPredictedData([]);
     Fluttertoast.showToast(
-      msg: 'Berhasil simpan data wajah',
+      msg: 'Save Face Data Success',
       backgroundColor: Colors.green.shade600,
       textColor: Colors.white,
     );
@@ -68,7 +68,7 @@ class SaveFaceDataNIKState extends State<SaveFaceDataNIK> {
   signSheet(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.deepPurple.shade800,
+          color: Colors.blue.shade900,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(25), topRight: Radius.circular(25))),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -109,10 +109,10 @@ class SaveFaceDataNIKState extends State<SaveFaceDataNIK> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.deepPurple.shade800,
+          color: Colors.blue.shade900,
           boxShadow: <BoxShadow>[
             BoxShadow(
-              color: Colors.deepPurple.shade800.withOpacity(0.1),
+              color: Colors.blue.shade800.withOpacity(0.1),
               blurRadius: 1,
               offset: const Offset(0, 2),
             ),

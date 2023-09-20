@@ -15,7 +15,7 @@ class CameraHeader extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.w600, fontSize: 14),
+                color: Colors.white, fontWeight: FontWeight.w600, fontSize: 20),
             textAlign: TextAlign.center,
           ),
         ],
@@ -26,8 +26,8 @@ class CameraHeader extends StatelessWidget {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: <Color>[
-            Colors.deepPurple.shade800,
-            Colors.deepPurple.shade800.withOpacity(0.1)
+            Colors.blue.shade900,
+            Colors.blue.shade900,
           ],
         ),
       ),

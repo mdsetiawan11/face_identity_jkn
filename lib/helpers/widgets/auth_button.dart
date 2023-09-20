@@ -11,10 +11,10 @@ class AuthButton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.deepPurple.shade800,
+          color: Colors.blue.shade900,
           boxShadow: <BoxShadow>[
             BoxShadow(
-              color: Colors.deepPurple.withOpacity(0.1),
+              color: Colors.blue.withOpacity(0.1),
               blurRadius: 1,
               offset: Offset(0, 2),
             ),
