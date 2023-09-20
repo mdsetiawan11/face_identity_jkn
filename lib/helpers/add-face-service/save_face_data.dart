@@ -2,41 +2,38 @@
 
 import 'package:face_net_authentication/locator.dart';
 import 'package:face_net_authentication/helpers/db/database_helper.dart';
-import 'package:face_net_authentication/helpers/db/class_siswa.dart';
+import 'package:face_net_authentication/helpers/db/class_peserta.dart';
 import 'package:face_net_authentication/helpers/services/ml_service.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class SaveFaceData extends StatefulWidget {
+class SaveFaceDataNIK extends StatefulWidget {
   final Function onPressed;
   final bool isLogin;
   final Function reload;
-  final String idsiswa;
-  final String nmsiswa;
+  final String nik;
 
-  const SaveFaceData({
+  const SaveFaceDataNIK({
     super.key,
     required this.isLogin,
     required this.onPressed,
     required this.reload,
-    required this.idsiswa,
-    required this.nmsiswa,
+    required this.nik,
   });
 
   @override
-  State<SaveFaceData> createState() => _SaveFaceDataState();
+  State<SaveFaceDataNIK> createState() => SaveFaceDataNIKState();
 }
 
-class _SaveFaceDataState extends State<SaveFaceData> {
+class SaveFaceDataNIKState extends State<SaveFaceDataNIK> {
   final MLService _mlService = locator<MLService>();
 
   Future saveSiswaFace(context) async {
     DatabaseHelper databaseHelper = DatabaseHelper.instance;
     List predictedData = _mlService.predictedData;
 
-    Siswa dataToSave = Siswa(
-      idsiswa: widget.idsiswa,
-      nmsiswa: widget.nmsiswa,
+    Peserta dataToSave = Peserta(
+      nik: widget.nik,
       modelData: predictedData,
     );
     await databaseHelper.insert(dataToSave);
@@ -85,26 +82,16 @@ class _SaveFaceDataState extends State<SaveFaceData> {
             decoration: InputDecoration(
                 disabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.white)),
-                labelText: 'ID Siswa :',
+                labelText: 'NIK :',
                 labelStyle: TextStyle(color: Colors.white)),
-            controller: TextEditingController(text: widget.idsiswa),
-          ),
-          TextField(
-            enabled: false,
-            style: TextStyle(color: Colors.white),
-            decoration: InputDecoration(
-                disabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white)),
-                labelText: 'Nama Siswa :',
-                labelStyle: TextStyle(color: Colors.white)),
-            controller: TextEditingController(text: widget.nmsiswa),
+            controller: TextEditingController(text: widget.nik),
           ),
           SizedBox(
             height: 10,
           ),
           MaterialButton(
             color: Colors.white,
-            textColor: Colors.deepPurple.shade800,
+            textColor: Colors.blue.shade900,
             onPressed: () async {
               await saveSiswaFace(context);
             },

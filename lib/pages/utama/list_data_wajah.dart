@@ -1,5 +1,5 @@
 import 'package:face_net_authentication/helpers/db/database_helper.dart';
-import 'package:face_net_authentication/helpers/db/class_siswa.dart';
+import 'package:face_net_authentication/helpers/db/class_peserta.dart';
 import 'package:flutter/material.dart';
 
 class ListDataWajah extends StatefulWidget {
@@ -40,7 +40,7 @@ class _ListDataWajahState extends State<ListDataWajah> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: FutureBuilder<List<Siswa>>(
+        child: FutureBuilder<List<Peserta>>(
             future: dbHelper.queryAllSiswa(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
@@ -50,7 +50,7 @@ class _ListDataWajahState extends State<ListDataWajah> {
                       return Card(
                         child: ListTile(
                           title: Text(
-                            snapshot.data![index].nmsiswa,
+                            snapshot.data![index].nik,
                             style: TextStyle(fontSize: 18),
                           ),
                           trailing: Icon(Icons.read_more),
@@ -61,7 +61,7 @@ class _ListDataWajahState extends State<ListDataWajah> {
               } else {
                 return Center(
                   child: CircularProgressIndicator(
-                    color: Colors.deepPurple.shade800,
+                    color: Colors.blue.shade900,
                   ),
                 );
               }

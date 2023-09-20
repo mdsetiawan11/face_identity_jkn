@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:math' as math;
-import 'package:face_net_authentication/pages/siswa/face-services/save_face_data.dart';
+import 'package:face_net_authentication/helpers/add-face-service/save_face_data.dart';
+
 import 'package:face_net_authentication/locator.dart';
 import 'package:face_net_authentication/helpers/widgets/FacePainter.dart';
 import 'package:face_net_authentication/helpers/widgets/camera_header.dart';
@@ -12,17 +13,19 @@ import 'package:camera/camera.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:flutter/material.dart';
 
-class AddFace extends StatefulWidget {
-  final String idsiswa;
-  final String nmsiswa;
-  const AddFace({Key? key, required this.idsiswa, required this.nmsiswa})
-      : super(key: key);
+class AddFaceData extends StatefulWidget {
+  final String nik;
+
+  const AddFaceData({
+    Key? key,
+    required this.nik,
+  }) : super(key: key);
 
   @override
-  SignUpState createState() => SignUpState();
+  AddFaceDataState createState() => AddFaceDataState();
 }
 
-class SignUpState extends State<AddFace> {
+class AddFaceDataState extends State<AddFaceData> {
   String? imagePath;
   Face? faceDetected;
   Size? imageSize;
@@ -201,19 +204,18 @@ class SignUpState extends State<AddFace> {
           children: [
             body,
             CameraHeader(
-              "Tambah Data Wajah " + widget.nmsiswa,
+              "Add Face Data " + widget.nik,
               onBackPressed: _onBackPressed,
             )
           ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: !_bottomSheetVisible
-            ? SaveFaceData(
+            ? SaveFaceDataNIK(
                 onPressed: onShot,
                 isLogin: false,
                 reload: _reload,
-                nmsiswa: widget.nmsiswa,
-                idsiswa: widget.idsiswa,
+                nik: widget.nik,
               )
             : Container());
   }

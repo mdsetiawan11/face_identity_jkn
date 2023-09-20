@@ -3,7 +3,7 @@ import 'dart:math';
 import 'dart:typed_data';
 import 'package:camera/camera.dart';
 import 'package:face_net_authentication/helpers/db/database_helper.dart';
-import 'package:face_net_authentication/helpers/db/class_siswa.dart';
+import 'package:face_net_authentication/helpers/db/class_peserta.dart';
 import 'package:face_net_authentication/helpers/services/image_converter.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
@@ -60,7 +60,7 @@ class MLService {
     this._predictedData = List.from(output);
   }
 
-  Future<Siswa?> predict() async {
+  Future<Peserta?> predict() async {
     return _searchResult(this._predictedData);
   }
 
@@ -104,17 +104,17 @@ class MLService {
     return convertedBytes.buffer.asFloat32List();
   }
 
-  Future<Siswa?> _searchResult(List predictedData) async {
+  Future<Peserta?> _searchResult(List predictedData) async {
     DatabaseHelper _dbHelper = DatabaseHelper.instance;
 
-    List<Siswa> siswas = await _dbHelper.queryAllSiswa();
+    List<Peserta> listpeserta = await _dbHelper.queryAllSiswa();
     double minDist = 999;
     double currDist = 0.0;
-    Siswa? predictedResult;
+    Peserta? predictedResult;
 
-    print('users.length=> ${siswas.length}');
+    print('users.length=> ${listpeserta.length}');
 
-    for (Siswa u in siswas) {
+    for (Peserta u in listpeserta) {
       currDist = _euclideanDistance(u.modelData, predictedData);
       if (currDist <= threshold && currDist < minDist) {
         minDist = currDist;

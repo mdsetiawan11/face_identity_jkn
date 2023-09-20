@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:face_net_authentication/helpers/db/class_siswa.dart';
+import 'package:face_net_authentication/helpers/db/class_peserta.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
@@ -9,10 +9,9 @@ class DatabaseHelper {
   static final _databaseName = "MyDatabase.db";
   static final _databaseVersion = 1;
 
-  static final table = 'siswa';
+  static final table = 'peserta';
   static final columnId = 'id';
-  static final columnIdsiswa = 'idsiswa';
-  static final columnNmsiswa = 'nmsiswa';
+  static final columnNIK = 'nik';
   static final columnModelData = 'model_data';
 
   DatabaseHelper._privateConstructor();
@@ -36,22 +35,21 @@ class DatabaseHelper {
         '''
           CREATE TABLE $table (
             $columnId INTEGER PRIMARY KEY,
-            $columnIdsiswa TEXT NOT NULL,
-            $columnNmsiswa TEXT NOT NULL,
+            $columnNIK TEXT NOT NULL,            
             $columnModelData TEXT NOT NULL
           )
           ''');
   }
 
-  Future<int> insert(Siswa siswa) async {
+  Future<int> insert(Peserta p) async {
     Database db = await instance.database;
-    return await db.insert(table, siswa.toMap());
+    return await db.insert(table, p.toMap());
   }
 
-  Future<List<Siswa>> queryAllSiswa() async {
+  Future<List<Peserta>> queryAllSiswa() async {
     Database db = await instance.database;
-    List<Map<String, dynamic>> siswas = await db.query(table);
-    return siswas.map((u) => Siswa.fromMap(u)).toList();
+    List<Map<String, dynamic>> listpeserta = await db.query(table);
+    return listpeserta.map((u) => Peserta.fromMap(u)).toList();
   }
 
   Future<int> deleteAll() async {
