@@ -69,9 +69,14 @@ class FaceRecognitionPageState extends State<FaceRecognitionPage> {
   Future<void> _predictFacesFromImage({@required CameraImage? image}) async {
     assert(image != null, 'Image is null');
     await _faceDetectorService.detectFacesFromImage(image!);
+
     if (_faceDetectorService.faceDetected) {
       _mlService.setCurrentPrediction(image, _faceDetectorService.faces[0]);
+
+      onTap();
+      setState(() {});
     }
+
     if (mounted) setState(() {});
   }
 
@@ -83,7 +88,7 @@ class FaceRecognitionPageState extends State<FaceRecognitionPage> {
       showDialog(
           context: context,
           builder: (context) =>
-              AlertDialog(content: Text('Tidak ada wajah terdeteksi!')));
+              AlertDialog(content: Text('Face not detected!')));
     }
   }
 

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:face_net_authentication/locator.dart';
 import 'package:face_net_authentication/helpers/services/camera.service.dart';
 import 'package:camera/camera.dart';
@@ -18,7 +20,11 @@ class FaceDetectorService {
   void initialize() {
     _faceDetector = GoogleMlKit.vision.faceDetector(
       FaceDetectorOptions(
-        performanceMode: FaceDetectorMode.accurate,
+        performanceMode: FaceDetectorMode.fast,
+        enableLandmarks: true,
+        enableClassification: true,
+        enableContours: true,
+        enableTracking: true,
       ),
     );
 
@@ -72,10 +78,14 @@ class FaceDetectorService {
   Future<List<Face>> detect(CameraImage image, InputImageRotation rotation) {
     final faceDetector = GoogleMlKit.vision.faceDetector(
       FaceDetectorOptions(
-        performanceMode: FaceDetectorMode.accurate,
+        performanceMode: FaceDetectorMode.fast,
         enableLandmarks: true,
+        enableClassification: true,
+        enableContours: true,
+        enableTracking: true,
       ),
     );
+
     final WriteBuffer allBytes = WriteBuffer();
     for (final Plane plane in image.planes) {
       allBytes.putUint8List(plane.bytes);
@@ -106,7 +116,10 @@ class FaceDetectorService {
     );
 
     return faceDetector.processImage(
-      InputImage.fromBytes(bytes: bytes, inputImageData: inputImageData),
+      InputImage.fromBytes(
+        bytes: bytes,
+        inputImageData: inputImageData,
+      ),
     );
   }
 

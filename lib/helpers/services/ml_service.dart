@@ -22,9 +22,9 @@ class MLService {
       if (Platform.isAndroid) {
         delegate = GpuDelegateV2(
           options: GpuDelegateOptionsV2(
-            isPrecisionLossAllowed: false,
+            isPrecisionLossAllowed: true,
             inferencePreference: TfLiteGpuInferenceUsage.fastSingleAnswer,
-            inferencePriority1: TfLiteGpuInferencePriority.minLatency,
+            inferencePriority1: TfLiteGpuInferencePriority.auto,
             inferencePriority2: TfLiteGpuInferencePriority.auto,
             inferencePriority3: TfLiteGpuInferencePriority.auto,
           ),
