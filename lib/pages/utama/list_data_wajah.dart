@@ -26,7 +26,7 @@ class _ListDataWajahState extends State<ListDataWajah> {
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.white,
         title: const Text(
-          'Data Wajah',
+          'Face Data List',
           style: TextStyle(color: Colors.white),
         ),
         automaticallyImplyLeading: true,
@@ -54,7 +54,24 @@ class _ListDataWajahState extends State<ListDataWajah> {
                             style: TextStyle(fontSize: 18),
                           ),
                           trailing: Icon(Icons.read_more),
-                          onTap: () {},
+                          onTap: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    content: SingleChildScrollView(
+                                      child: Column(
+                                        children: [
+                                          Text('Face Data ' +
+                                              snapshot.data![index].nik),
+                                          Text(snapshot.data![index].modelData
+                                              .toString()),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                });
+                          },
                         ),
                       );
                     });

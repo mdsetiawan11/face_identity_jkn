@@ -111,7 +111,7 @@ class _FindDataState extends State<FindData> {
         );
         Navigator.of(context).pop();
       } else {
-        Navigator.of(context).push(
+        Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) => DetailData(
               nik: data['nik'],

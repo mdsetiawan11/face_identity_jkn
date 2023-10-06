@@ -149,7 +149,7 @@ class _TambahDataWidgettState extends State<TambahDataWidget> {
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
                             // Do something like updating SharedPreferences or User Settings etc.
-                            Navigator.push(
+                            Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>

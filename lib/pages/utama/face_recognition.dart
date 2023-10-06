@@ -136,8 +136,8 @@ class FaceRecognitionPageState extends State<FaceRecognitionPage> {
           )
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: fab,
+      //floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      //floatingActionButton: fab,
     );
   }
 

@@ -14,14 +14,15 @@ class CameraHeader extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.w600, fontSize: 20),
+            style: TextStyle(color: Colors.white, fontSize: 18),
             textAlign: TextAlign.center,
           ),
         ],
       ),
-      height: 80,
+      height: 70,
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,

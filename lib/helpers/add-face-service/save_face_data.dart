@@ -39,7 +39,7 @@ class SaveFaceDataNIKState extends State<SaveFaceDataNIK> {
     await databaseHelper.insert(dataToSave);
     _mlService.setPredictedData([]);
     Fluttertoast.showToast(
-      msg: 'Save Face Data Success',
+      msg: 'Face Data Saved',
       backgroundColor: Colors.green.shade600,
       textColor: Colors.white,
     );
@@ -95,7 +95,7 @@ class SaveFaceDataNIKState extends State<SaveFaceDataNIK> {
             onPressed: () async {
               await saveSiswaFace(context);
             },
-            child: const Text('Simpan Data Wajah'),
+            child: const Text('Save Face Data'),
           )
         ],
       ),
