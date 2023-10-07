@@ -164,20 +164,21 @@ class _TambahDataWidgettState extends State<TambahDataWidget> {
         },
         child: Container(
           width: double.infinity,
-          height: 120,
+          height: 60,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
                 Image.asset(
                   'assets/add-friend.png',
+                  scale: 10,
                 ),
                 SizedBox(
-                  width: 25,
+                  width: 20,
                 ),
                 Text(
                   'Add Face Data',
-                  style: TextStyle(fontSize: 28),
+                  style: TextStyle(fontSize: 20),
                 )
               ],
             ),
@@ -204,20 +205,21 @@ class DataWajahWidget extends StatelessWidget {
         },
         child: Container(
           width: double.infinity,
-          height: 120,
+          height: 60,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
                 Image.asset(
                   'assets/searching.png',
+                  scale: 10,
                 ),
                 SizedBox(
-                  width: 25,
+                  width: 20,
                 ),
                 Text(
                   'Face Data List',
-                  style: TextStyle(fontSize: 28),
+                  style: TextStyle(fontSize: 20),
                 )
               ],
             ),

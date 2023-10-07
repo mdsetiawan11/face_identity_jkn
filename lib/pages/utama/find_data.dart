@@ -119,6 +119,7 @@ class _FindDataState extends State<FindData> {
               nama: data['nama'],
               segmen: data['segmen'],
               status: data['status'],
+              kelas: data['kelas'],
               fktp: data['fktp'],
             ),
           ),

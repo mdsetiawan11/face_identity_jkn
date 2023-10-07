@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:face_net_authentication/locator.dart';
 import 'package:face_net_authentication/helpers/services/camera.service.dart';
 import 'package:camera/camera.dart';
